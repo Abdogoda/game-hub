@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Game</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌨️</text></svg>">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <script src="../script.js"></script>
+    <a href="../index.html" class="back-to-menu">← Back to Menu</a>
+    
+    <div class="container">
+        <h1 class="game-title">Typing Speed Test</h1>
+        
+        <div class="game-stats">
+            <div class="stat-box">
+                <h3>WPM</h3>
+                <div class="score-value" id="wpm">0</div>
+            </div>
+            <div class="stat-box">
+                <h3>Score</h3>
+                <div class="score-value" id="score">0</div>
+            </div>
+            <div class="stat-box">
+                <h3>Time</h3>
+                <div class="time-value" id="time">60</div>
+            </div>
+            <div class="stat-box">
+                <h3>Accuracy</h3>
+                <div class="accuracy-value" id="accuracy">100%</div>
+            </div>
+        </div>
+
+        <div class="difficulty-control">
+            <label for="difficultySelect">Difficulty:</label>
+            <select id="difficultySelect">
+                <option value="easy">Easy</option>
+                <option value="medium" selected>Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </div>
+
+        <div class="game-container">
+            <div class="word-display" id="wordDisplay">Click Start to Begin</div>
+            <input type="text" id="wordInput" class="word-input" placeholder="Type here..." disabled autocomplete="off">
+            <div class="game-controls">
+                <button id="startBtn" class="control-btn">Start Game</button>
+                <button id="restartBtn" class="control-btn" style="display: none;">Restart</button>
+            </div>
+        </div>
+
+        <div class="leaderboard">
+            <h2>🏆 Top Scores</h2>
+            <div id="leaderboardList"></div>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="gameOverModal" class="modal">
+        <div class="modal-content">
+            <h2>Time's Up! 🎉</h2>
+            <div class="results">
+                <div class="result-item">
+                    <span class="result-label">WPM:</span>
+                    <span class="result-value" id="finalWPM">0</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Score:</span>
+                    <span class="result-value" id="finalScore">0</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Accuracy:</span>
+                    <span class="result-value" id="finalAccuracy">0%</span>
+                </div>
+            </div>
+            <p id="recordMessage"></p>
+            <button id="playAgainBtn" class="modal-btn">Play Again</button>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="correctSound" src="../assets/audio/success.mp3"></audio>
+    <audio id="gameOverSound" src="../assets/audio/fail.mp3"></audio>
+
+    <script src="game.js"></script>
+</body>
+</html>

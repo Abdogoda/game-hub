@@ -36,7 +36,7 @@ body {
     font-size: 3rem;
     margin-bottom: 30px;
     color: var(--text-color);
-    text-shadow: var(--shadow);
+    text-shadow: var(--theme-shadow);
     animation: bounceIn 1s ease-out;
     font-weight: bold;
 }
@@ -54,7 +54,7 @@ body {
     backdrop-filter: blur(10px);
     padding: 15px 30px;
     border-radius: 15px;
-    box-shadow: var(--shadow);
+    box-shadow: var(--theme-shadow);
     border: 2px solid rgba(255, 255, 255, 0.1);
     min-width: 120px;
 }
@@ -190,7 +190,7 @@ body {
     margin-bottom: 20px;
     color: var(--text-color);
     font-weight: bold;
-    text-shadow: var(--shadow);
+    text-shadow: var(--theme-shadow);
 }
 
 .modal-content p {

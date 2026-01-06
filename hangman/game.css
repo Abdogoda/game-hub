@@ -23,7 +23,7 @@ body{
     padding: 30px;
     border-radius: 20px;
     position: relative;
-    box-shadow: var(--shadow);
+    box-shadow: var(--theme-shadow);
     border: 2px solid rgba(255, 255, 255, 0.2);
 }
 hr{

@@ -18,7 +18,6 @@
     --card-bg: rgba(255, 255, 255, 0.1);
     --text-color: #fff;
     --theme-text: #fff;
-    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     --theme-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
@@ -61,7 +60,7 @@ body.theme-white {
     --text-color: #1a1a1a;
     --theme-text: #1a1a1a;
     --card-bg: rgba(0, 0, 0, 0.05);
-    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    --theme-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
     --theme-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -258,7 +257,7 @@ body.theme-white .particle {
     backdrop-filter: blur(10px);
     padding: 10px;
     border-radius: 50px;
-    box-shadow: var(--shadow);
+    box-shadow: var(--theme-shadow);
     z-index: 1000;
     animation: slideInRight 0.5s ease;
 }
@@ -391,7 +390,7 @@ body.theme-white .particle {
     border-radius: 20px;
     padding: 40px 30px;
     text-align: center;
-    box-shadow: var(--shadow);
+    box-shadow: var(--theme-shadow);
     border: 2px solid rgba(255, 255, 255, 0.2);
     transition: all 0.4s ease;
     text-decoration: none;
@@ -433,7 +432,7 @@ body.theme-white .particle {
 
 .game-card:hover {
     transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 50px 0 rgba(31, 38, 135, 0.5);
+    box-shadow: 0 15px 50px 0 rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.4);
 }
 

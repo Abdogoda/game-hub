@@ -24,7 +24,7 @@ body {
     background: var(--card-bg);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    box-shadow: var(--shadow);
+    box-shadow: var(--theme-shadow);
     border: 2px solid rgba(255, 255, 255, 0.2);
 }
 .game .title{

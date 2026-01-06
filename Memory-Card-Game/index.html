@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Card Matching Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Memory Card Game</h1>
+        <div class="stats">
+            <div class="stat">
+                <span class="label">Moves:</span>
+                <span id="moves">0</span>
+            </div>
+            <div class="stat">
+                <span class="label">Time:</span>
+                <span id="timer">00:00</span>
+            </div>
+            <div class="stat">
+                <span class="label">Matches:</span>
+                <span id="matches">0/8</span>
+            </div>
+        </div>
+        <div class="best-record" id="bestRecord">
+            <h3>🏆 Best Record</h3>
+            <p>Moves: <span id="bestMoves">--</span> | Time: <span id="bestTime">--</span></p>
+        </div>
+        <div class="game-board" id="gameBoard"></div>
+        <button class="btn-restart" id="restartBtn">Restart Game</button>
+    </div>
+
+    <div class="modal" id="winModal">
+        <div class="modal-content">
+            <h2 id="winTitle">🎉 Congratulations! 🎉</h2>
+            <p id="winMessage">You won the game!</p>
+            <div class="modal-stats">
+                <p>Moves: <span id="finalMoves"></span></p>
+                <p>Time: <span id="finalTime"></span></p>
+            </div>
+            <div class="record-comparison" id="recordComparison"></div>
+            <button class="btn-play-again" id="playAgainBtn">Play Again</button>
+        </div>
+    </div>
+
+    <audio id="successSound" src="../assets/audio/success.mp3"></audio>
+    <audio id="failSound" src="../assets/audio/fail.mp3"></audio>
+
+    <script src="main.js"></script>
+</body>
+</html>

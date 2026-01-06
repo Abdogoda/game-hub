@@ -17,17 +17,17 @@ body{
 .container{
     max-width: 1000px;
     width: 100%;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--card-bg);
     backdrop-filter: blur(10px);
     min-height: 700px;
     padding: 30px;
     border-radius: 20px;
     position: relative;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    box-shadow: var(--shadow);
     border: 2px solid rgba(255, 255, 255, 0.2);
 }
 hr{
-    border-color: #f3f3f3;
+    border-color: var(--text-color, #f3f3f3);
     margin: 15px 0;
 }
 .row{
@@ -39,7 +39,7 @@ hr{
     font-size: 25px;
     padding: 0 0 15px 0;
     font-weight: bold;
-    color: #fff;
+    color: var(--text-color);
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -233,7 +233,7 @@ hr{
     margin: 5px;
     font-size: 24px;
     line-height: 55px;
-    color: white;
+    color: var(--text-color);
     cursor: pointer;
     border-radius: 12px;
     transition: all 0.3s ease;
@@ -273,7 +273,7 @@ hr{
     font-weight: bolder;
     background: rgba(255, 255, 255, 0.2);
     border: 2px solid rgba(255, 255, 255, 0.3);
-    color: #fff;
+    color: var(--text-color);
     border-radius: 12px;
 }
 .letters-guess span.space{
@@ -336,7 +336,7 @@ hr{
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: var(--text-color);
     font-weight: bold;
 }
 

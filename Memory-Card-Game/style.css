@@ -22,7 +22,7 @@ body {
 }
 
 h1 {
-    color: #fff;
+    color: var(--text-color);
     font-size: 2.5rem;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -31,12 +31,12 @@ h1 {
 .stats {
     display: flex;
     justify-content: space-around;
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--card-bg);
     backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 15px;
     margin-bottom: 15px;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    box-shadow: var(--shadow);
 }
 
 .best-record {
@@ -50,14 +50,14 @@ h1 {
 }
 
 .best-record h3 {
-    color: #fff;
+    color: var(--text-color);
     font-size: 1.2rem;
     margin-bottom: 8px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .best-record p {
-    color: #fff;
+    color: var(--text-color);
     font-size: 1rem;
     font-weight: 600;
 }
@@ -74,13 +74,14 @@ h1 {
 }
 
 .label {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-color);
+    opacity: 0.8;
     font-size: 0.9rem;
     font-weight: 500;
 }
 
 .stat span:last-child {
-    color: #fff;
+    color: var(--text-color);
     font-size: 1.5rem;
     font-weight: bold;
 }
@@ -143,7 +144,7 @@ h1 {
 
 .card-front {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #fff;
+    color: var(--text-color);
     font-weight: bold;
 }
 
@@ -155,7 +156,7 @@ h1 {
 .btn-restart {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
-    color: #fff;
+    color: var(--text-color);
     border: 2px solid rgba(255, 255, 255, 0.3);
     padding: 15px 40px;
     font-size: 1.1rem;
@@ -281,8 +282,8 @@ h1 {
 }
 
 .btn-play-again {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #fff;
+    background: var(--primary-gradient);
+    color: var(--text-color);
     border: none;
     padding: 15px 40px;
     font-size: 1.1rem;
@@ -290,12 +291,13 @@ h1 {
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: var(--theme-shadow);
 }
 
 .btn-play-again:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    box-shadow: var(--theme-shadow);
+    filter: brightness(1.1);
 }
 
 @media (max-width: 600px) {

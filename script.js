@@ -62,7 +62,7 @@ if (themeButtons.length > 0) {
 
 function setTheme(theme) {
     // Remove all theme classes
-    body.classList.remove('theme-purple', 'theme-blue', 'theme-orange', 'theme-green', 'theme-dark', 'theme-cyan', 'theme-white');
+    body.classList.remove('theme-purple', 'theme-red', 'theme-orange', 'theme-dark', 'theme-cyan', 'theme-white');
     
     // Add new theme class
     if (theme !== 'purple') {

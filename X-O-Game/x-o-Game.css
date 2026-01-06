@@ -19,12 +19,12 @@ body {
     width: 100%;
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
+    color: var(--text-color);
     padding: 30px;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--card-bg);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    box-shadow: var(--shadow);
     border: 2px solid rgba(255, 255, 255, 0.2);
 }
 .game .title{
@@ -38,6 +38,7 @@ body {
     border-radius: 15px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     border: 2px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-color);
 }
 .game .title span{
     color: #ffd700;
@@ -52,7 +53,7 @@ body {
     margin: 5px;
     font-size: 100px;
     font-weight: 800;
-    color: white;
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;

@@ -18,18 +18,18 @@ body {
 .container {
     max-width: 800px;
     width: 100%;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--card-bg);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 40px 30px;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    box-shadow: var(--shadow);
     border: 2px solid rgba(255, 255, 255, 0.2);
     text-align: center;
 }
 
 .game-title {
     font-size: 2.5rem;
-    color: #fff;
+    color: var(--text-color);
     margin-bottom: 30px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     animation: fadeInDown 0.6s ease;
@@ -78,7 +78,8 @@ body {
 }
 
 .score-box h3 {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-color);
+    opacity: 0.9;
     font-size: 1rem;
     margin-bottom: 10px;
     font-weight: 600;
@@ -106,7 +107,7 @@ body {
 }
 
 .result-text {
-    color: #fff;
+    color: var(--text-color);
     font-size: 1.5rem;
     font-weight: 600;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -235,7 +236,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    color: #fff;
+    color: var(--text-color);
     font-weight: 600;
 }
 
@@ -271,7 +272,7 @@ body {
 .reset-btn {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
-    color: #fff;
+    color: var(--text-color);
     border: 2px solid rgba(255, 255, 255, 0.3);
     padding: 15px 40px;
     font-size: 1.1rem;
@@ -317,13 +318,14 @@ body {
 }
 
 .stat-label {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-color);
+    opacity: 0.8;
     font-size: 0.9rem;
     font-weight: 500;
 }
 
 .stat-value {
-    color: #fff;
+    color: var(--text-color);
     font-size: 1.5rem;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);

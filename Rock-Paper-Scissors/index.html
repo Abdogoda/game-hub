@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="../script.js"></script>
+    <a href="../index.html" class="back-to-menu">← Back to Menu</a>
+    
+    <div class="container">
+        <h1 class="game-title">Rock Paper Scissors</h1>
+        
+        <div class="score-board">
+            <div class="score-box">
+                <h3>You</h3>
+                <p class="score" id="playerScore">0</p>
+            </div>
+            <div class="score-box">
+                <h3>Rounds</h3>
+                <p class="score" id="rounds">0</p>
+            </div>
+            <div class="score-box">
+                <h3>Computer</h3>
+                <p class="score" id="computerScore">0</p>
+            </div>
+        </div>
+
+        <div class="result-display" id="resultDisplay">
+            <p class="result-text" id="resultText">Choose your move!</p>
+        </div>
+
+        <div class="choices-display">
+            <div class="choice-box">
+                <h4>Your Choice</h4>
+                <div class="choice-icon" id="playerChoice">❓</div>
+            </div>
+            <div class="vs-text">VS</div>
+            <div class="choice-box">
+                <h4>Computer Choice</h4>
+                <div class="choice-icon" id="computerChoice">❓</div>
+            </div>
+        </div>
+
+        <div class="game-buttons">
+            <button class="choice-btn" data-choice="rock">
+                <span class="choice-emoji">✊</span>
+                <span class="choice-label">Rock</span>
+            </button>
+            <button class="choice-btn" data-choice="paper">
+                <span class="choice-emoji">✋</span>
+                <span class="choice-label">Paper</span>
+            </button>
+            <button class="choice-btn" data-choice="scissors">
+                <span class="choice-emoji">✌️</span>
+                <span class="choice-label">Scissors</span>
+            </button>
+        </div>
+
+        <button class="reset-btn" id="resetBtn">Reset Game</button>
+    </div>
+
+    <audio id="winSound" src="../assets/audio/success.mp3"></audio>
+    <audio id="loseSound" src="../assets/audio/fail.mp3"></audio>
+
+    <script src="game.js"></script>
+</body>
+</html>

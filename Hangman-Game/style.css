@@ -5,17 +5,26 @@
     user-select: none;
 }
 body{
-    font-family: Tahoma, Arial;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    background: var(--theme-gradient, #fff);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 .container{
-    margin: 20px auto;
-    width: 1000px;
-    background-color: #fff;
-    height: 700px;
-    padding: 15px;
-    border: 1px solid #333;
+    max-width: 1000px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    min-height: 700px;
+    padding: 30px;
+    border-radius: 20px;
     position: relative;
-
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 hr{
     border-color: #f3f3f3;
@@ -23,14 +32,16 @@ hr{
 }
 .row{
     display: flex;
+    gap: 20px;
 }
 .game-info{
     display: flex;
     font-size: 25px;
-    padding:0 0 15px 0;
+    padding: 0 0 15px 0;
     font-weight: bold;
-    color: #009688;
+    color: #fff;
     margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 .game-info .game-name{
     flex: 1;
@@ -49,10 +60,13 @@ hr{
 }
 .hangman-draw{
     flex: 1;
-    background-color: #eee;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
     padding: 20px;
     height: 324px;
     margin-left: 25px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 .hangman-draw .the-draw{
     width: 60px;
@@ -204,6 +218,8 @@ hr{
     flex: 1;
     padding: 15px;
     text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
 }
 .letters.finish{
     pointer-events: none;
@@ -212,29 +228,39 @@ hr{
     width: 55px;
     height: 55px;
     display: inline-block;
-    background-color: #009688;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
     margin: 5px;
     font-size: 24px;
     line-height: 55px;
     color: white;
     cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    font-weight: bold;
 }
 .container .letters .letter-box:hover{
-    background-color: #28a195;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
 }
 .container .letters .letter-box.clicked{
-    background-color: #333;
+    background: rgba(0, 0, 0, 0.3);
     opacity: 0.4;
     pointer-events: none;
 }
 .letters-guess{
     margin: 10px auto;
-    background-color: #ddd;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     padding: 15px;
     display: flex;
     justify-content: center;
     min-height: 104px;
     flex-direction: row-reverse;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 .letters-guess span{
     width: 60px;
@@ -245,9 +271,10 @@ hr{
     line-height: 60px;
     text-transform: uppercase;
     font-weight: bolder;
-    background-color: #fdfdfd;
-    border: 1px dashed #333;
-    color: #009688;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    border-radius: 12px;
 }
 .letters-guess span.space{
     background: none;
@@ -259,7 +286,7 @@ hr{
     position: absolute;
     width: 20px;
     height: 5px;
-    background-color: #009688;
+    background: rgba(255, 255, 255, 0.5);
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);

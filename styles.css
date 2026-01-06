@@ -1,15 +1,73 @@
+/* ============================================
+   GLOBAL STYLES - Shared across all pages
+   ============================================ */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ============================================
+   THEME VARIABLES - All 7 themes
+   ============================================ */
+
 :root {
     --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --theme-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --card-bg: rgba(255, 255, 255, 0.1);
     --text-color: #fff;
+    --theme-text: #fff;
     --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --theme-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
+
+body.theme-blue {
+    --primary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --theme-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --theme-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+}
+
+body.theme-orange {
+    --primary-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    --theme-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    --theme-shadow: 0 4px 15px rgba(250, 112, 154, 0.3);
+}
+
+body.theme-green {
+    --primary-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    --theme-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    --theme-shadow: 0 4px 15px rgba(67, 233, 123, 0.3);
+}
+
+body.theme-dark {
+    --primary-gradient: linear-gradient(135deg, #434343 0%, #000000 100%);
+    --theme-gradient: linear-gradient(135deg, #434343 0%, #000000 100%);
+    --theme-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+body.theme-cyan {
+    --primary-gradient: linear-gradient(135deg, #45F3FF 0%, #00d4ff 100%);
+    --theme-gradient: linear-gradient(135deg, #45F3FF 0%, #00d4ff 100%);
+    --text-color: #1a1a1a;
+    --theme-text: #1a1a1a;
+    --card-bg: rgba(255, 255, 255, 0.2);
+    --theme-shadow: 0 4px 15px rgba(69, 243, 255, 0.3);
+}
+
+body.theme-white {
+    --primary-gradient: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+    --theme-gradient: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+    --text-color: #1a1a1a;
+    --theme-text: #1a1a1a;
+    --card-bg: rgba(0, 0, 0, 0.05);
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    --theme-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   BODY BASE STYLES
+   ============================================ */
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -24,39 +82,50 @@ body {
     transition: background 0.5s ease;
 }
 
-body.theme-blue {
-    --primary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+/* ============================================
+   BACK TO MENU BUTTON - Shared across all games
+   ============================================ */
+
+.back-to-menu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
 }
 
-body.theme-orange {
-    --primary-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+.back-to-menu:hover {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 0, 0, 0.15);
 }
 
-body.theme-green {
-    --primary-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+.back-to-menu:active {
+    transform: translateY(0);
 }
 
-body.theme-dark {
-    --primary-gradient: linear-gradient(135deg, #434343 0%, #000000 100%);
-}
+/* ============================================
+   MAIN PAGE SPECIFIC STYLES
+   ============================================ */
 
-body.theme-cyan {
-    --primary-gradient: linear-gradient(135deg, #45F3FF 0%, #00d4ff 100%);
-    --text-color: #1a1a1a;
-    --card-bg: rgba(255, 255, 255, 0.2);
-}
-
+/* Theme-specific adjustments for main page */
 body.theme-cyan .subtitle,
 body.theme-cyan .game-description,
 body.theme-cyan .footer {
     color: rgba(0, 0, 0, 0.8);
-}
-
-body.theme-white {
-    --primary-gradient: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
-    --text-color: #1a1a1a;
-    --card-bg: rgba(0, 0, 0, 0.05);
-    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }
 
 body.theme-white .subtitle,

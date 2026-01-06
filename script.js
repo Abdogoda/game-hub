@@ -1,24 +1,52 @@
-// Theme Switcher
+// Global Theme Loader - Load saved theme from localStorage on all pages
+(function() {
+    const savedTheme = localStorage.getItem('gameHubTheme') || 'purple';
+    
+    // Apply theme class to body immediately
+    if (savedTheme !== 'purple') {
+        document.body.classList.add('theme-' + savedTheme);
+    }
+})();
+
+// Theme Switcher for main page
 const themeButtons = document.querySelectorAll('.theme-btn');
 const body = document.body;
 
-// Load saved theme
-const savedTheme = localStorage.getItem('gameHubTheme') || 'purple';
-setTheme(savedTheme);
+// Initialize theme on main page
+if (themeButtons.length > 0) {
+    const savedTheme = localStorage.getItem('gameHubTheme') || 'purple';
+    setTheme(savedTheme);
+}
 
-// Theme button click handlers
-themeButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const theme = btn.dataset.theme;
-        setTheme(theme);
-        localStorage.setItem('gameHubTheme', theme);
+// Theme button click handlers (only for main page)
+if (themeButtons.length > 0) {
+    themeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const theme = btn.dataset.theme;
+            setTheme(theme);
+            localStorage.setItem('gameHubTheme', theme);
+        });
     });
-});
+}
 
 function setTheme(theme) {
     // Remove all theme classes
     body.classList.remove('theme-purple', 'theme-blue', 'theme-orange', 'theme-green', 'theme-dark', 'theme-cyan', 'theme-white');
     
+    // Add new theme class
+    if (theme !== 'purple') {
+        body.classList.add(`theme-${theme}`);
+    }
+    
+    // Update active button (only on main page)
+    if (themeButtons.length > 0) {
+        themeButtons.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.theme === theme) {
+                btn.classList.add('active');
+            }
+        });
+    }
     // Add new theme class
     if (theme !== 'purple') {
         body.classList.add(`theme-${theme}`);

@@ -36,7 +36,7 @@ h1 {
     border-radius: 15px;
     padding: 15px;
     margin-bottom: 15px;
-    box-shadow: var(--shadow);
+    box-shadow: var(--theme-shadow);
 }
 
 .best-record {
@@ -45,7 +45,7 @@ h1 {
     border-radius: 15px;
     padding: 15px;
     margin-bottom: 30px;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    box-shadow: var(--theme-shadow);
     border: 2px solid rgba(255, 215, 0, 0.4);
 }
 
@@ -96,13 +96,12 @@ h1 {
 
 .card {
     aspect-ratio: 1;
-    background: #fff;
     border-radius: 12px;
     cursor: pointer;
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.6s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--theme-shadow);
 }
 
 .card:hover {
@@ -116,8 +115,7 @@ h1 {
 .card.matched {
     cursor: default;
     animation: matchAnimation 0.5s ease;
-    box-shadow: 0 0 20px rgba(102, 126, 234, 0.8), 0 0 40px rgba(118, 75, 162, 0.6);
-    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: var(--theme-gradient);
 }
 
 @keyframes matchAnimation {
@@ -143,7 +141,7 @@ h1 {
 }
 
 .card-front {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary-gradient);
     color: var(--text-color);
     font-weight: bold;
 }
@@ -164,13 +162,13 @@ h1 {
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    box-shadow: var(--theme-shadow);
 }
 
 .btn-restart:hover {
     background: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+    box-shadow: var(--theme-shadow);
 }
 
 .modal {

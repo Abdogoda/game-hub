@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Jumper Game</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏃</text></svg>">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <script src="../script.js"></script>
+    <a href="../index.html" class="back-to-menu">← Back to Menu</a>
+    
+    <div class="container">
+        <h1 class="game-title">Platform Jumper</h1>
+        
+        <div class="game-stats">
+            <div class="stat-box">
+                <h3>Score</h3>
+                <div class="score-value" id="score">0</div>
+            </div>
+            <div class="stat-box">
+                <h3>High Score</h3>
+                <div class="highscore-value" id="highScore">0</div>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <canvas id="gameCanvas"></canvas>
+            <div class="game-controls">
+                <button id="startBtn" class="control-btn">Start Game</button>
+                <button id="restartBtn" class="control-btn" style="display: none;">Restart</button>
+            </div>
+            <div class="instructions">
+                <p>🎮 Press <strong>SPACE</strong> or <strong>CLICK</strong> to jump!</p>
+                <p>⭐ Land on platforms to score points</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="gameOverModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Game Over!</h2>
+            <p id="modalMessage">Your score:</p>
+            <div class="final-score" id="finalScore">0</div>
+            <p id="recordMessage"></p>
+            <button id="playAgainBtn" class="modal-btn">Play Again</button>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="jumpSound" src="../assets/audio/success.mp3"></audio>
+    <audio id="gameOverSound" src="../assets/audio/fail.mp3"></audio>
+
+    <script src="game.js"></script>
+</body>
+</html>

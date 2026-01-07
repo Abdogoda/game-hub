@@ -13,6 +13,13 @@ function t(key) {
     return key; // Fallback to key if i18n not loaded
 }
 
+// Play sound helper using SoundManager
+function playSound(soundName) {
+    if (window.SoundManager && window.isSoundEnabled && window.isSoundEnabled()) {
+        window.SoundManager.play(soundName);
+    }
+}
+
 // DOM Elements
 const welcomeScreen = document.getElementById('welcomeScreen');
 const gameContainer = document.getElementById('gameContainer');
@@ -107,6 +114,9 @@ async function askQuestion() {
         return;
     }
     
+    // Play message sound
+    playSound('message');
+    
     // Detect if user is trying to guess a player name
     const isItPattern = /^is\s+it\s+([a-z\s]+)\??$/i;
     const match = question.match(isItPattern);
@@ -175,6 +185,9 @@ async function makeGuess() {
         return;
     }
     
+    // Play guess sound
+    playSound('message');
+    
     addUserMessage(`🤔 My guess: Is it ${guess}?`);
     guessInput.value = '';
     setButtonsState(true);
@@ -192,8 +205,10 @@ async function makeGuess() {
         addAIMessage(response, normalized);
         
         if (normalized.includes('YES')) {
+            playSound('successFanfare');
             setTimeout(() => endGame(true, t('footballGuesser.messages.congratulations').replace('{guess}', guess)), 500);
         } else {
+            playSound('wrong');
             questionsLeft--;
             updateUI();
             

@@ -3,6 +3,13 @@ const t = (key) => {
     return window.i18n ? window.i18n.t(key) : key;
 };
 
+// Play sound helper using SoundManager
+function playSound(soundName) {
+    if (window.SoundManager && window.isSoundEnabled && window.isSoundEnabled()) {
+        window.SoundManager.play(soundName);
+    }
+}
+
 // Letters 
 let letters = Array.from("دجحخهعغفقثصضذطكمنتالبيسشئءؤرىةوزظ");
 let lettersCon = document.querySelector((".letters"));
@@ -59,6 +66,10 @@ document.addEventListener("click", (e) => {
     let thestatus = false;
     if (e.target.className === "letter-box"){
         e.target.classList.add("clicked");
+        
+        // Play click sound
+        playSound('click');
+        
         lettersAndSpace.forEach((wordLetter, wordIndex) => {
             if (e.target.innerHTML == wordLetter){
                 thestatus = true;
@@ -82,8 +93,12 @@ document.addEventListener("click", (e) => {
         if (thestatus != true){
             wrontAttempts++;
             theDraw.classList.add(`wrong-${wrontAttempts}`);
+            
+            // Play wrong sound
+            playSound('wrong');
+            
             if (wrontAttempts == 6){
-                playSoundEffect(document.getElementById("fail"));
+                playSound('buzzer');
                 setTimeout(() => {
                     lettersCon.classList.add("finish");
                 failGame();
@@ -105,7 +120,7 @@ function failGame(){
 }
 
 function successGame(){
-    playSoundEffect(document.getElementById("success"));
+    playSound('successFanfare');
     let div = document.createElement("div");
     let divText = document.createTextNode(t('hangman.youWin'));
     div.appendChild(divText);

@@ -8,16 +8,44 @@
     }
 })();
 
-// Global Sound Control
+// Global Sound State Synchronization - Initialize on all pages
+(function() {
+    // Wait for SoundManager to be available
+    const initSoundState = function() {
+        if (window.SoundManager) {
+            const savedSound = localStorage.getItem('gameHubSound');
+            const shouldEnable = savedSound === null || savedSound === 'true';
+            window.SoundManager.toggle(shouldEnable);
+            console.log('🔊 Sound state initialized:', shouldEnable ? 'enabled' : 'muted');
+        }
+    };
+    
+    // Try to initialize immediately
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSoundState);
+    } else {
+        // Run after a short delay to ensure SoundManager is loaded
+        setTimeout(initSoundState, 100);
+    }
+})();
+
+// Global Sound Control with SoundManager
 window.isSoundEnabled = function() {
-    const soundEnabled = localStorage.getItem('gameHubSound');
-    return soundEnabled === null || soundEnabled === 'true';
+    return window.SoundManager ? window.SoundManager.isEnabled() : true;
 };
 
-window.playGameSound = function(sound) {
-    if (window.isSoundEnabled() && sound) {
-        sound.currentTime = 0;
-        sound.play().catch(e => console.log('Sound play failed:', e));
+window.setSoundEnabled = function(enabled) {
+    const soundEnabled = localStorage.getItem('gameHubSound');
+    const shouldEnable = enabled !== undefined ? enabled : (soundEnabled === null || soundEnabled === 'true');
+    if (window.SoundManager) {
+        window.SoundManager.toggle(shouldEnable);
+    }
+    return shouldEnable;
+};
+
+window.playGameSound = function(soundName) {
+    if (window.SoundManager && window.isSoundEnabled()) {
+        window.SoundManager.play(soundName);
     }
 };
 
@@ -30,12 +58,25 @@ if (soundToggle) {
         soundToggle.classList.toggle('muted', !enabled);
     };
     
+    // Initialize sound state
+    const savedSound = localStorage.getItem('gameHubSound');
+    if (savedSound !== null) {
+        window.setSoundEnabled(savedSound === 'true');
+    }
     updateSoundIcon();
     
     soundToggle.addEventListener('click', () => {
         const newState = !window.isSoundEnabled();
         localStorage.setItem('gameHubSound', newState);
+        if (window.SoundManager) {
+            window.SoundManager.toggle(newState);
+        }
         updateSoundIcon();
+        
+        // Play click sound as feedback
+        if (newState) {
+            window.playGameSound('click');
+        }
     });
 }
 
@@ -92,11 +133,15 @@ function setTheme(theme) {
     });
 }
 
-// Add hover sound effect (optional)
+// Add hover sound effect
 const gameCards = document.querySelectorAll('.game-card');
 gameCards.forEach(card => {
     card.addEventListener('mouseenter', () => {
         card.style.transform = 'translateY(-10px) scale(1.02)';
+    });
+    
+    card.addEventListener('click', () => {
+        window.playGameSound('click');
     });
     
     card.addEventListener('mouseleave', () => {

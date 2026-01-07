@@ -30,6 +30,13 @@ const modalTitle = document.getElementById('modalTitle');
 const jumpSound = document.getElementById('jumpSound');
 const gameOverSound = document.getElementById('gameOverSound');
 
+// Play sound helper using SoundManager
+function playSound(soundName) {
+    if (window.SoundManager && window.isSoundEnabled && window.isSoundEnabled()) {
+        window.SoundManager.play(soundName);
+    }
+}
+
 // Player Object
 const player = {
     x: 100,
@@ -64,16 +71,6 @@ function loadHighScore() {
 function saveHighScore() {
     localStorage.setItem('platformJumperHighScore', highScore);
     highScoreEl.textContent = highScore;
-}
-
-// Play sound effect
-function playSoundEffect(sound) {
-    if (window.playGameSound) {
-        window.playGameSound(sound);
-    } else if (window.isSoundEnabled && window.isSoundEnabled() && sound) {
-        sound.currentTime = 0;
-        sound.play().catch(e => console.log('Sound play failed:', e));
-    }
 }
 
 // Create initial platforms
@@ -222,7 +219,7 @@ function jump() {
         player.velocityY = player.jumpPower;
         player.grounded = false;
         player.jumpCount++;
-        playSoundEffect(jumpSound);
+        playSound('jump');
     }
 }
 
@@ -286,6 +283,9 @@ function startGame() {
     score = 0;
     scoreEl.textContent = score;
     
+    // Play start sound
+    playSound('raceStart');
+    
     // Reset player
     player.x = 100;
     player.y = 300;
@@ -321,7 +321,7 @@ function endGame() {
     }
     
     // Play game over sound
-    playSoundEffect(gameOverSound);
+    playSound('thud');
     
     // Show game over modal
     showGameOverModal(isNewRecord);

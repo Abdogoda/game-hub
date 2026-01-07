@@ -1,17 +1,14 @@
-// Play sound helper
-function playSoundEffect(sound) {
-    if (window.playGameSound) {
-        window.playGameSound(sound);
-    } else if (window.isSoundEnabled && window.isSoundEnabled() && sound) {
-        sound.currentTime = 0;
-        sound.play().catch(e => console.log('Sound play failed:', e));
-    }
-}
-
 // Translation helper
 const t = (key) => {
     return window.i18n ? window.i18n.t(key) : key;
 };
+
+// Play sound helper using SoundManager
+function playSound(soundName) {
+    if (window.SoundManager && window.isSoundEnabled && window.isSoundEnabled()) {
+        window.SoundManager.play(soundName);
+    }
+}
 
 let title = document.querySelector(".title");
 let turn = "X";
@@ -38,7 +35,7 @@ function winner(){
         end(3, 5, 7)
     }else if(sqaures[1] != '' && sqaures[2] != '' && sqaures[3] != '' && sqaures[4] != '' && sqaures[5] != '' && sqaures[6] != '' && sqaures[7] != '' && sqaures[8] != '' && sqaures[9] != ''){
         title.innerHTML = t('ticTacToe.endGame');
-        playSoundEffect(document.querySelector(".failed"));
+        playSound('buzzer');
         setInterval(() => {title.innerHTML += "."}, 800);
         setTimeout(() => {window.location.reload();}, 4000);
     }
@@ -49,10 +46,12 @@ function game(id){
         ele.innerHTML = "X";
         turn = "O"
         title.innerHTML = t('ticTacToe.oTurn');
+        playSound('click');
     }else if(turn === "O" && ele.innerHTML == ''){
         ele.innerHTML = "O";
         turn = "X"
         title.innerHTML = t('ticTacToe.xTurn');
+        playSound('click');
     }
     winner();
 }
@@ -62,7 +61,7 @@ function end(num1, num2, num3){
         document.getElementById(`item`+num1).style.backgroundColor = "#333";
         document.getElementById(`item`+num2).style.backgroundColor = "#333";
         document.getElementById(`item`+num3).style.backgroundColor = "#333";
-        playSoundEffect(document.querySelector(".winner"));
+        playSound('successFanfare');
         setInterval(() => {title.innerHTML += "."}, 800);
         setTimeout(() => {window.location.reload();}, 3000);
 }

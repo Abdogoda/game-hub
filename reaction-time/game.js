@@ -30,13 +30,10 @@ const playAgainBtn = document.getElementById('playAgainBtn');
 const clickSound = document.getElementById('clickSound');
 const tooEarlySound = document.getElementById('tooEarlySound');
 
-// Play sound effect
-function playSoundEffect(sound) {
-    if (window.playGameSound) {
-        window.playGameSound(sound);
-    } else if (window.isSoundEnabled && window.isSoundEnabled() && sound) {
-        sound.currentTime = 0;
-        sound.play().catch(e => console.log('Sound play failed:', e));
+// Play sound helper using SoundManager
+function playSound(soundName) {
+    if (window.SoundManager && window.isSoundEnabled && window.isSoundEnabled()) {
+        window.SoundManager.play(soundName);
     }
 }
 
@@ -105,6 +102,10 @@ function updateAttemptsList() {
 
 // Start test
 function startTest() {
+    if (attempts.length === 0) {
+        playSound('raceStart');
+    }
+    
     gameState = 'waiting';
     instruction.style.display = 'none';
     gameScreen.className = 'game-screen ready';
@@ -154,7 +155,7 @@ function handleClick() {
             message.textContent = t('reactionTime.tooEarlyEmoji');
         }
         
-        playSoundEffect(tooEarlySound);
+        playSound('wrong');
         
         setTimeout(() => {
             resetScreen();
@@ -167,7 +168,7 @@ function handleClick() {
         const reactionTime = Date.now() - startTime;
         attempts.push(reactionTime);
         
-        playSoundEffect(clickSound);
+        playSound('clickFast');
         
         gameState = 'idle';
         

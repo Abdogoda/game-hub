@@ -65,15 +65,6 @@ const retryBtn = document.getElementById('retryBtn');
 const successSound = document.getElementById('successSound');
 const failSound = document.getElementById('failSound');
 
-// Play sound effect
-function playSoundEffect(sound) {
-    if (window.playGameSound) {
-        window.playGameSound(sound);
-    } else if (window.isSoundEnabled && window.isSoundEnabled() && sound) {
-        sound.currentTime = 0;
-        sound.play().catch(e => console.log('Sound play failed:', e));
-    }
-}
 
 // Load best level
 function loadBestLevel() {
@@ -337,7 +328,7 @@ function levelComplete() {
         saveBestLevel();
     }
     
-    playSoundEffect(successSound);
+    playSound('levelUp');
     
     // Show success modal
     if (completedLevelEl) {
@@ -355,7 +346,7 @@ function gameOver() {
         cancelAnimationFrame(animationId);
     }
     
-    playSoundEffect(failSound);
+    playSound('buzzer');
     
     // Show game over modal
     gameOverScoreEl.textContent = score;

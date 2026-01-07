@@ -12,6 +12,13 @@ const t = (key) => {
     return window.i18n ? window.i18n.t(key) : key;
 };
 
+// Play sound helper using SoundManager
+function playSound(soundName) {
+    if (window.SoundManager && window.isSoundEnabled && window.isSoundEnabled()) {
+        window.SoundManager.play(soundName);
+    }
+}
+
 // DOM Elements
 const scoreEl = document.getElementById('score');
 const timeLeftEl = document.getElementById('timeLeft');
@@ -26,8 +33,6 @@ const recordMessageEl = document.getElementById('recordMessage');
 const playAgainBtn = document.getElementById('playAgainBtn');
 const modalTitle = document.getElementById('modalTitle');
 const modalMessage = document.getElementById('modalMessage');
-const hitSound = document.getElementById('hitSound');
-const missSound = document.getElementById('missSound');
 
 // Load high score from localStorage
 function loadHighScore() {
@@ -42,16 +47,6 @@ function loadHighScore() {
 function saveHighScore() {
     localStorage.setItem('whackAMoleHighScore', highScore);
     highScoreEl.textContent = highScore;
-}
-
-// Play sound effect
-function playSoundEffect(sound) {
-    if (window.playGameSound) {
-        window.playGameSound(sound);
-    } else if (window.isSoundEnabled && window.isSoundEnabled() && sound) {
-        sound.currentTime = 0;
-        sound.play().catch(e => console.log('Sound play failed:', e));
-    }
 }
 
 // Get random hole
@@ -82,6 +77,9 @@ function showMole() {
     // Show mole
     hole.classList.add('active');
     currentMole = hole;
+    
+    // Play mole appearing sound
+    playSound('boing');
 
     // Hide mole after random time
     const showTime = getRandomTime(400, 900);
@@ -115,7 +113,7 @@ function whackMole(e) {
         showScorePopup(hole, '+1');
         
         // Play hit sound
-        playSoundEffect(hitSound);
+        playSound('hit');
         
         // Remove active and whacked classes
         setTimeout(() => {
@@ -169,6 +167,11 @@ function startCountdown() {
         timeLeft--;
         timeLeftEl.textContent = timeLeft;
         
+        // Beep sound for last 5 seconds
+        if (timeLeft <= 5 && timeLeft > 0) {
+            playSound('beep');
+        }
+        
         // Warning when time is low
         if (timeLeft <= 10) {
             timeLeftEl.classList.add('warning');
@@ -187,6 +190,9 @@ function startGame() {
     score = 0;
     timeLeft = 30;
     gameActive = true;
+    
+    // Play start sound
+    playSound('raceStart');
     
     // Update UI
     scoreEl.textContent = score;
@@ -236,10 +242,11 @@ function showGameOverModal(isNewRecord) {
     if (isNewRecord && score > 0) {
         modalTitle.textContent = t('whackAMole.newRecord');
         recordMessageEl.textContent = t('whackAMole.newRecordMessage');
-        playSoundEffect(hitSound);
+        playSound('successFanfare');
     } else {
         modalTitle.textContent = t('whackAMole.gameOver');
         recordMessageEl.textContent = score > 0 ? `${t('whackAMole.highScoreLabel')} ${highScore}` : t('whackAMole.tryAgain');
+        playSound('buzzer');
     }
     
     gameOverModal.classList.add('show');

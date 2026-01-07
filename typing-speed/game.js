@@ -40,15 +40,13 @@ const leaderboardList = document.getElementById('leaderboardList');
 const correctSound = document.getElementById('correctSound');
 const gameOverSound = document.getElementById('gameOverSound');
 
-// Play sound effect
-function playSoundEffect(sound) {
-    if (window.playGameSound) {
-        window.playGameSound(sound);
-    } else if (window.isSoundEnabled && window.isSoundEnabled() && sound) {
-        sound.currentTime = 0;
-        sound.play().catch(e => console.log('Sound play failed:', e));
+// Play sound helper using SoundManager
+function playSound(soundName) {
+    if (window.SoundManager && window.isSoundEnabled && window.isSoundEnabled()) {
+        window.SoundManager.play(soundName);
     }
 }
+
 
 // Get random word based on difficulty
 function getRandomWord() {
@@ -103,7 +101,7 @@ function checkWord() {
         
         // Animate correct
         wordDisplay.classList.add('correct');
-        playSoundEffect(correctSound);
+        playSound('ding');
         
         setTimeout(() => {
             wordDisplay.classList.remove('correct');
@@ -145,6 +143,9 @@ function startGame() {
     correctWords = 0;
     totalWords = 0;
     timeLeft = 60;
+    
+    // Play start sound
+    playSound('raceStart');
     startTime = Date.now();
     
     // Reset UI
@@ -195,7 +196,7 @@ function endGame() {
     saveScore(finalWPM, score, finalAccuracy, difficultySelect.value);
     
     // Play game over sound
-    playSoundEffect(gameOverSound);
+    playSound('buzzer');
     
     // Show game over modal
     showGameOverModal(finalWPM, score, finalAccuracy);

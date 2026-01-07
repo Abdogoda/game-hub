@@ -33,6 +33,13 @@ const winTitle = document.getElementById('winTitle');
 const winMessage = document.getElementById('winMessage');
 const recordComparison = document.getElementById('recordComparison');
 
+// Play sound helper using SoundManager
+function playSound(soundName) {
+    if (window.SoundManager && window.isSoundEnabled && window.isSoundEnabled()) {
+        window.SoundManager.play(soundName);
+    }
+}
+
 // Initialize game
 function initGame() {
     // Reset game state
@@ -164,6 +171,9 @@ function handleCardClick(card) {
         return;
     }
 
+    // Play flip sound
+    playSound('flip');
+
     // Flip card
     card.classList.add('flipped');
     flippedCards.push(card);
@@ -190,6 +200,10 @@ function checkMatch() {
             card2.classList.add('matched');
             matchedPairs++;
             matchesDisplay.textContent = `${matchedPairs}/8`;
+            
+            // Play success sound
+            playSound('success');
+            
             flippedCards = [];
             isProcessing = false;
 
@@ -200,6 +214,9 @@ function checkMatch() {
         }, 500);
     } else {
         // No match
+        // Play wrong sound
+        playSound('wrong');
+        
         setTimeout(() => {
             card1.classList.remove('flipped');
             card2.classList.remove('flipped');
@@ -223,13 +240,8 @@ function startTimer() {
 function endGame() {
     clearInterval(timerInterval);
     
-    // Play success sound
-    successSound.currentTime = 0;
-    if (window.playGameSound) {
-        window.playGameSound(successSound);
-    } else {
-        successSound.play();
-    }
+    // Play success fanfare
+    playSound('successFanfare');
     
     // Show win modal after a short delay
     setTimeout(() => {

@@ -36,8 +36,13 @@ const finalScoreEl = document.getElementById('finalScore');
 const recordMessageEl = document.getElementById('recordMessage');
 const playAgainBtn = document.getElementById('playAgainBtn');
 const modalTitle = document.getElementById('modalTitle');
-const eatSound = document.getElementById('eatSound');
-const gameOverSound = document.getElementById('gameOverSound');
+
+// Play sound helper using SoundManager
+function playSound(soundName) {
+    if (window.SoundManager && window.isSoundEnabled && window.isSoundEnabled()) {
+        window.SoundManager.play(soundName);
+    }
+}
 
 // Snake Object
 let snake = [
@@ -82,16 +87,6 @@ function loadHighScore() {
 function saveHighScore() {
     localStorage.setItem('snakeGameHighScore', highScore);
     highScoreEl.textContent = highScore;
-}
-
-// Play sound effect
-function playSoundEffect(sound) {
-    if (window.playGameSound) {
-        window.playGameSound(sound);
-    } else if (window.isSoundEnabled && window.isSoundEnabled() && sound) {
-        sound.currentTime = 0;
-        sound.play().catch(e => console.log('Sound play failed:', e));
-    }
 }
 
 // Generate random food position
@@ -246,7 +241,7 @@ function updateSnake() {
         score++;
         scoreEl.textContent = score;
         animateScore();
-        playSoundEffect(eatSound);
+        playSound('ding');
         generateFood();
         
         // Increase speed every 3 points (reduce interval by 5ms)
@@ -342,6 +337,9 @@ function startGame() {
     gameActive = true;
     score = 0;
     
+    // Play start sound
+    playSound('raceStart');
+    
     // Get selected speed from slider
     const speedIndex = parseInt(speedSlider.value) - 1;
     baseSpeed = speedValues[speedIndex];
@@ -389,7 +387,7 @@ function endGame() {
     }
     
     // Play game over sound
-    playSoundEffect(gameOverSound);
+    playSound('buzzer');
     
     // Show game over modal
     showGameOverModal(isNewRecord);
@@ -402,6 +400,7 @@ function showGameOverModal(isNewRecord) {
     if (isNewRecord && score > 0) {
         modalTitle.textContent = t('snake.newRecord');
         recordMessageEl.textContent = t('snake.newRecordMessage');
+        playSound('successFanfare');
     } else {
         modalTitle.textContent = t('snake.gameOver');
         recordMessageEl.textContent = score > 0 ? `${t('snake.highScoreLabel')} ${highScore}` : t('snake.tryAgain');

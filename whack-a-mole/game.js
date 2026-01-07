@@ -84,7 +84,7 @@ function showMole() {
     currentMole = hole;
 
     // Hide mole after random time
-    const showTime = getRandomTime(600, 1200);
+    const showTime = getRandomTime(400, 900);
     moleTimer = setTimeout(() => {
         if (hole.classList.contains('active') && !hole.classList.contains('whacked')) {
             hole.classList.remove('active');

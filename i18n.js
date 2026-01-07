@@ -26,7 +26,14 @@ class I18n {
 
     async loadTranslations(lang) {
         try {
-            const response = await fetch(`/assets/translations/${lang}.json`);
+            // Detect if we're in a subdirectory by checking the current path
+            const path = window.location.pathname;
+            const isInSubdirectory = path.split('/').filter(p => p && p !== 'index.html').length > 0;
+            
+            // Use relative path based on location
+            const basePath = isInSubdirectory ? '../assets/translations' : './assets/translations';
+            const response = await fetch(`${basePath}/${lang}.json`);
+            
             if (!response.ok) throw new Error(`Failed to load ${lang}.json`);
             this.translations = await response.json();
             console.log(`Loaded ${lang} translations:`, this.translations);

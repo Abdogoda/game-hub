@@ -196,7 +196,7 @@ function endGame() {
     saveScore(finalWPM, score, finalAccuracy, difficultySelect.value);
     
     // Play game over sound
-    playSound('buzzer');
+    playSound('fail');
     
     // Show game over modal
     showGameOverModal(finalWPM, score, finalAccuracy);

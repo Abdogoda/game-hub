@@ -246,7 +246,7 @@ function showGameOverModal(isNewRecord) {
     } else {
         modalTitle.textContent = t('whackAMole.gameOver');
         recordMessageEl.textContent = score > 0 ? `${t('whackAMole.highScoreLabel')} ${highScore}` : t('whackAMole.tryAgain');
-        playSound('buzzer');
+        playSound('fail');
     }
     
     gameOverModal.classList.add('show');

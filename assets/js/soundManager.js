@@ -1,40 +1,45 @@
-// Global Sound Manager using Howler.js
-// This file manages all game sounds across the application
-
 const SoundManager = (function() {
+    // Detect if we're on the global index.html or in a game subdirectory
+    // Check if pathname has subdirectories by counting path segments
+    const pathname = window.location.pathname;
+    const pathSegments = pathname.split('/').filter(segment => segment && segment !== 'index.html');
+    const isInSubdirectory = pathSegments.length > 0;
+    
+    // Set path prefix based on location
+    const pathPrefix = isInSubdirectory ? '../assets/audio/' : 'assets/audio/';
+    
     // Sound library - maps sound names to their files and settings
     const soundLibrary = {
         // UI & Menu sounds
-        click: { src: '../assets/audio/computer-mouse-click.mp3', volume: 0.5 },
+        click: { src: pathPrefix + 'computer-mouse-click.mp3', volume: 0.5 },
         
         // Success sounds
-        success: { src: '../assets/audio/success.mp3', volume: 0.6 },
-        successFanfare: { src: '../assets/audio/success-fanfare-trumpets.mp3', volume: 0.5 },
-        ding: { src: '../assets/audio/ding.mp3', volume: 0.5 },
+        success: { src: pathPrefix + 'success.mp3', volume: 0.6 },
+        successFanfare: { src: pathPrefix + 'success-fanfare-trumpets.mp3', volume: 0.5 },
+        ding: { src: pathPrefix + 'ding.mp3', volume: 0.5 },
         
         // Fail/Error sounds
-        fail: { src: '../assets/audio/fail.mp3', volume: 0.6 },
-        wrong: { src: '../assets/audio/wrong.mp3', volume: 0.5 },
-        buzzer: { src: '../assets/audio/buzzer-or-wrong-answer-20582.mp3', volume: 0.5 },
+        fail: { src: pathPrefix + 'fail.mp3', volume: 0.6 },
+        wrong: { src: pathPrefix + 'wrong.mp3', volume: 0.5 },
         
         // Action sounds
-        flip: { src: '../assets/audio/flip.mp3', volume: 0.4 },
-        jump: { src: '../assets/audio/jump.mp3', volume: 0.5 },
-        whoosh: { src: '../assets/audio/whoosh.mp3', volume: 0.4 },
-        thud: { src: '../assets/audio/thud.mp3', volume: 0.5 },
-        hit: { src: '../assets/audio/metal-hit-96-200425.mp3', volume: 0.5 },
-        boing: { src: '../assets/audio/boing-spring-mouth-harp.mp3', volume: 0.5 },
+        flip: { src: pathPrefix + 'flip.mp3', volume: 0.4 },
+        jump: { src: pathPrefix + 'jump.mp3', volume: 0.5 },
+        whoosh: { src: pathPrefix + 'whoosh.mp3', volume: 0.4 },
+        thud: { src: pathPrefix + 'thud.mp3', volume: 0.5 },
+        hit: { src: pathPrefix + 'metal-hit-96-200425.mp3', volume: 0.5 },
+        boing: { src: pathPrefix + 'boing-spring-mouth-harp.mp3', volume: 0.5 },
         
         // Timer/Countdown sounds
-        beep: { src: '../assets/audio/beep-329314.mp3', volume: 0.4 },
-        countdown: { src: '../assets/audio/short-beep-countdown-81121.mp3', volume: 0.5 },
-        clockTick: { src: '../assets/audio/clock-ticking-down.mp3', volume: 0.3 },
-        raceStart: { src: '../assets/audio/race-start-beeps-125125.mp3', volume: 0.5 },
+        beep: { src: pathPrefix + 'beep-329314.mp3', volume: 0.4 },
+        countdown: { src: pathPrefix + 'short-beep-countdown-81121.mp3', volume: 0.5 },
+        clockTick: { src: pathPrefix + 'clock-ticking-down.mp3', volume: 0.3 },
+        raceStart: { src: pathPrefix + 'race-start-beeps-125125.mp3', volume: 0.5 },
         
         // Game specific
-        clickFast: { src: '../assets/audio/click-fast-305759.mp3', volume: 0.5 },
-        message: { src: '../assets/audio/message-notification-190034.mp3', volume: 0.5 },
-        levelUp: { src: '../assets/audio/level-up.mp3', volume: 0.6 }
+        clickFast: { src: pathPrefix + 'click-fast-305759.mp3', volume: 0.5 },
+        message: { src: pathPrefix + 'message-notification-190034.mp3', volume: 0.5 },
+        levelUp: { src: pathPrefix + 'level-up.mp3', volume: 0.6 }
     };
 
     // Initialize Howl objects

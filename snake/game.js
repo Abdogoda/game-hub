@@ -387,7 +387,7 @@ function endGame() {
     }
     
     // Play game over sound
-    playSound('buzzer');
+    playSound('fail');
     
     // Show game over modal
     showGameOverModal(isNewRecord);

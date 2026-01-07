@@ -97,7 +97,7 @@ document.addEventListener("click", (e) => {
             playSound('wrong');
             
             if (wrontAttempts == 6){
-                playSound('buzzer');
+                playSound('fail');
                 setTimeout(() => {
                     lettersCon.classList.add("finish");
                 failGame();

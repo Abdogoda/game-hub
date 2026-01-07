@@ -352,7 +352,7 @@ function gameOver() {
         cancelAnimationFrame(animationId);
     }
     
-    playSound('buzzer');
+    playSound('fail');
     
     // Show game over modal
     gameOverScoreEl.textContent = score;

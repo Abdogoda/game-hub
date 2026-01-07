@@ -127,18 +127,5 @@
 
     <script src="../i18n.js"></script>
     <script src="game.js"></script>
-    <script>
-        // Load API key from config.json before allowing game to start
-        fetch('../config.json')
-            .then(response => response.json())
-            .then(config => {
-                window.GROQ_API_KEY = config.GROQ_API_KEY;
-                console.log('✅ API key loaded successfully');
-            })
-            .catch(error => {
-                console.error('❌ Error loading config:', error);
-                console.warn('Please create config.json with your API key. See config.example.json for template.');
-            });
-    </script>
 </body>
 </html>

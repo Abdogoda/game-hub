@@ -35,6 +35,7 @@ A collection of 10 interactive games with bilingual support (English/Arabic).
 **Important:** Never commit your actual API key to Git. The `config.json` file is ignored by Git to prevent accidental exposure.
 
 To get a Groq API key:
+
 1. Visit https://console.groq.com
 2. Sign up for an account
 3. Generate an API key

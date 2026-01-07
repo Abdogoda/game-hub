@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Guesser</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <script src="../script.js"></script>
+    <a href="../index.html" class="back-to-menu">← Back to Menu</a>
+    
+    <div class="container">
+        <h1 class="game-title">Football Guesser</h1>
+        <p class="game-subtitle">Can you guess the football player in 10 questions?</p>
+
+        <div class="welcome-screen" id="welcomeScreen">
+            <div class="welcome-content">
+                <div class="welcome-icon">⚽</div>
+                <h2>How to Play</h2>
+                <ul class="instructions">
+                    <li>✅ AI will secretly choose a football player</li>
+                    <li>❓ Ask up to 10 yes/no questions</li>
+                    <li>🤔 Questions about club, nationality, position, etc.</li>
+                    <li>🎯 Try to guess the player's name</li>
+                </ul>
+                <button class="start-game-btn" id="startGameBtn">Start Game</button>
+            </div>
+        </div>
+
+        <div class="game-container" id="gameContainer" style="display: none;">
+            <div class="questions-counter" id="questionsCounter">
+                <span class="counter-label">Questions Remaining:</span>
+                <span class="counter-value" id="questionsLeft">10</span>
+            </div>
+            
+            <div class="chat-log" id="chatLog">
+                <div class="system-message">Think of your questions carefully. You have 10 questions to guess the player!</div>
+            </div>
+            
+            <div class="input-area">
+                <input type="text" id="questionInput" class="question-input" placeholder="Ask a yes/no question..." autocomplete="off">
+                <button id="askBtn" class="ask-btn">Ask</button>
+            </div>
+
+            <div class="guess-area" style="display: none;" id="guessArea">
+                <input type="text" id="guessInput" class="question-input" placeholder="Type the player's name..." autocomplete="off">
+                <button id="guessBtn" class="guess-btn">Guess Player</button>
+            </div>
+        </div>
+
+        <div class="game-over" id="gameOver" style="display: none;">
+            <h2 id="resultMessage"></h2>
+            <p id="resultDetails"></p>
+            
+            <div class="player-card-wrapper" id="playerCard" style="display: none;">
+                <div class="player-card">
+                    <div class="card-header">
+                        <div class="card-title">The Player Was</div>
+                        <div class="player-photo" id="playerPhoto">
+                            <div class="photo-placeholder">⚽</div>
+                        </div>
+                    </div>
+                    
+                    <div class="player-info-section">
+                        <div class="info-item">
+                            <span class="info-label">Full name:</span>
+                            <span class="info-value" id="fullName">Loading...</span>
+                        </div>
+                        
+                        <div class="info-item">
+                            <span class="info-label">Date of birth/Age:</span>
+                            <span class="info-value" id="birthInfo">--</span>
+                        </div>
+                        
+                        <div class="info-item">
+                            <span class="info-label">Place of birth:</span>
+                            <span class="info-value" id="birthPlace">--</span>
+                        </div>
+                        
+                        <div class="info-item">
+                            <span class="info-label">Height:</span>
+                            <span class="info-value" id="height">--</span>
+                        </div>
+                        
+                        <div class="info-item">
+                            <span class="info-label">Citizenship:</span>
+                            <span class="info-value" id="citizenship">--</span>
+                        </div>
+                        
+                        <div class="info-item">
+                            <span class="info-label">Position:</span>
+                            <span class="info-value" id="position">--</span>
+                        </div>
+                        
+                        <div class="info-item">
+                            <span class="info-label">Foot:</span>
+                            <span class="info-value" id="foot">--</span>
+                        </div>
+                        
+                        <div class="info-item">
+                            <span class="info-label">Current club:</span>
+                            <span class="info-value" id="currentClub">--</span>
+                        </div>
+                        
+                        <div class="info-item">
+                            <span class="info-label">Famous clubs:</span>
+                            <span class="info-value" id="famousClubs">--</span>
+                        </div>
+                        
+                        <div class="info-item highlight">
+                            <span class="info-label">Notable achievements:</span>
+                            <span class="info-value" id="achievements">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="restartBtn" class="control-btn">Play Again</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

@@ -7,6 +7,14 @@ let conversationHistory = [];
 let gameActive = false;
 let chosenPlayerReference = null;
 
+// Translation helper function
+function t(key) {
+    if (window.i18n && typeof window.i18n.t === 'function') {
+        return window.i18n.t(key) || key;
+    }
+    return key; // Fallback to key if i18n not loaded
+}
+
 // DOM Elements
 const welcomeScreen = document.getElementById('welcomeScreen');
 const gameContainer = document.getElementById('gameContainer');
@@ -45,7 +53,7 @@ async function startGame() {
     conversationHistory = [];
     updateUI();
     
-    addSystemMessage('Initializing AI... Please wait.');
+    addSystemMessage(t('footballGuesser.messages.initializing'));
     
     conversationHistory.push({
         role: 'system',
@@ -80,11 +88,11 @@ Consistency is crucial - base all answers on the same player you initially chose
         conversationHistory.pop();
         
         chatLog.innerHTML = '';
-        addSystemMessage('AI has secretly chosen a football player. You have 10 questions to guess who it is!');
-        addSystemMessage('Ask yes/no questions about nationality, club, position, achievements, etc.');
+        addSystemMessage(t('footballGuesser.messages.aiReady'));
+        addSystemMessage(t('footballGuesser.messages.askQuestions'));
     } catch (error) {
         chatLog.innerHTML = '';
-        addSystemMessage('Error: Unable to connect to AI. Please check your internet connection.');
+        addSystemMessage(t('footballGuesser.messages.connectionError'));
         gameActive = false;
         setTimeout(() => resetGame(), 3000);
     }
@@ -97,7 +105,7 @@ async function askQuestion() {
     if (!question || question.length < 3) {
         questionInput.style.borderColor = '#f44336';
         setTimeout(() => questionInput.style.borderColor = '', 500);
-        if (question && question.length < 3) addSystemMessage('Please ask a more detailed question.');
+        if (question && question.length < 3) addSystemMessage(t('footballGuesser.messages.askDetailed'));
         return;
     }
     
@@ -107,7 +115,7 @@ async function askQuestion() {
     if (match) {
         guessInput.value = match[1].trim();
         questionInput.value = '';
-        addSystemMessage('Detected a player guess! Use the "Guess Player" button below.');
+        addSystemMessage(t('footballGuesser.messages.guessDetected'));
         guessArea.style.display = 'flex';
         guessInput.focus();
         return;
@@ -128,7 +136,7 @@ async function askQuestion() {
                        normalized.includes('DON\'T KNOW') || normalized.includes('IDK');
         
         if (!isValid) {
-            addSystemMessage('AI response unclear. Question not counted. Please rephrase.');
+            addSystemMessage(t('footballGuesser.messages.unclearResponse'));
             conversationHistory.pop();
             conversationHistory.pop();
         } else {
@@ -138,11 +146,11 @@ async function askQuestion() {
             
             if (questionsLeft === 5) {
                 guessArea.style.display = 'flex';
-                addSystemMessage('Tip: You can start making guesses using the guess button below!');
+                addSystemMessage(t('footballGuesser.messages.canGuessNow'));
             }
             
             if (questionsLeft === 3) {
-                addSystemMessage('Only 3 questions left! Use the "Guess Player" option.');
+                addSystemMessage(t('footballGuesser.messages.threeLeft'));
             }
             
             if (questionsLeft === 0) {
@@ -150,7 +158,7 @@ async function askQuestion() {
             }
         }
     } catch (error) {
-        addSystemMessage('Network error. Your question was not counted. Please try again.');
+        addSystemMessage(t('footballGuesser.messages.networkError'));
         conversationHistory.pop();
     } finally {
         setButtonsState(false);
@@ -165,7 +173,7 @@ async function makeGuess() {
     if (!guess || guess.length < 3) {
         guessInput.style.borderColor = '#f44336';
         setTimeout(() => guessInput.style.borderColor = '', 500);
-        if (guess && guess.length < 3) addSystemMessage('Please enter a valid player name.');
+        if (guess && guess.length < 3) addSystemMessage(t('footballGuesser.messages.validName'));
         return;
     }
     
@@ -186,7 +194,7 @@ async function makeGuess() {
         addAIMessage(response, normalized);
         
         if (normalized.includes('YES')) {
-            setTimeout(() => endGame(true, `🎉 Congratulations! You correctly guessed ${guess}!`), 500);
+            setTimeout(() => endGame(true, t('footballGuesser.messages.congratulations').replace('{guess}', guess)), 500);
         } else {
             questionsLeft--;
             updateUI();
@@ -194,11 +202,12 @@ async function makeGuess() {
             if (questionsLeft === 0) {
                 setTimeout(() => endGame(false, 'Out of questions!'), 500);
             } else {
-                addSystemMessage(`Incorrect! ${questionsLeft} question${questionsLeft > 1 ? 's' : ''} remaining.`);
+                const questionsText = questionsLeft > 1 ? t('footballGuesser.messages.questionsPlural') : t('footballGuesser.messages.questionsSingular');
+                addSystemMessage(t('footballGuesser.messages.incorrect').replace('{count}', questionsLeft).replace('{questions}', questionsText));
             }
         }
     } catch (error) {
-        addSystemMessage('Network error. Your guess was not counted. Please try again.');
+        addSystemMessage(t('footballGuesser.messages.networkError'));
         conversationHistory.pop();
     } finally {
         setButtonsState(false);
@@ -280,9 +289,10 @@ async function endGame(won, message) {
     gameContainer.style.display = 'none';
     gameOver.style.display = 'block';
     
-    resultMessage.textContent = won ? '🎉 You Won!' : '😔 Game Over';
+    resultMessage.textContent = won ? t('footballGuesser.messages.youWon') : t('footballGuesser.messages.gameOver');
     resultMessage.style.color = won ? '#4CAF50' : '#f44336';
-    resultDetails.textContent = message + (won ? '' : ' Better luck next time!');
+    const betterLuck = won ? '' : ' ' + t('footballGuesser.messages.betterLuck');
+    resultDetails.textContent = message + betterLuck;
     
     await revealPlayer();
 }

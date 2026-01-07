@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hangman Game</title>
+    <title data-i18n="hangman.title">Hangman Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="game.css">
 </head>
 <body>
     <script src="../script.js"></script>
-    <a href="../index.html" class="back-to-menu">← Back to Menu</a>
+    <a href="../index.html" class="back-to-menu" data-i18n="hangman.backToMenu">← Back to Menu</a>
     <div class="container">
         <div class="game-info">
-            <div class="game-name">Hangman Game</div>
+            <div class="game-name" data-i18n="hangman.title">Hangman Game</div>
             <div class="category">
-                Word From: <span></span>
+                <span data-i18n="hangman.wordFrom">Word From:</span> <span></span>
             </div>
         </div>
         <hr>
@@ -43,6 +46,7 @@
     <audio src="../assets/audio/success.mp3" id="success" preload="auto"></audio>
     <audio src="../assets/audio/fail.mp3" id="fail" preload="auto"></audio>
 
+    <script src="../i18n.js"></script>
     <script src="game.js"></script>
 </body>
 </html>

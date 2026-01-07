@@ -7,6 +7,11 @@ let moleTimer = null;
 let countdownTimer = null;
 let currentMole = null;
 
+// Translation helper
+const t = (key) => {
+    return window.i18n ? window.i18n.t(key) : key;
+};
+
 // DOM Elements
 const scoreEl = document.getElementById('score');
 const timeLeftEl = document.getElementById('timeLeft');
@@ -229,12 +234,12 @@ function showGameOverModal(isNewRecord) {
     finalScoreEl.textContent = score;
     
     if (isNewRecord && score > 0) {
-        modalTitle.textContent = '🎉 New Record! 🎉';
-        recordMessageEl.textContent = '⭐ You set a new high score! ⭐';
+        modalTitle.textContent = t('whackAMole.newRecord');
+        recordMessageEl.textContent = t('whackAMole.newRecordMessage');
         playSoundEffect(hitSound);
     } else {
-        modalTitle.textContent = 'Game Over!';
-        recordMessageEl.textContent = score > 0 ? `High Score: ${highScore}` : 'Try again!';
+        modalTitle.textContent = t('whackAMole.gameOver');
+        recordMessageEl.textContent = score > 0 ? `${t('whackAMole.highScoreLabel')} ${highScore}` : t('whackAMole.tryAgain');
     }
     
     gameOverModal.classList.add('show');

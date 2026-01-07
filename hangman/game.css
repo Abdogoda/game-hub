@@ -497,3 +497,39 @@ hr{
         font-size: 35px;
     }
 }
+
+/* ============================================
+   RTL SUPPORT - Arabic language styling
+   ============================================ */
+
+[dir="rtl"] .game-info .game-name {
+    text-align: right;
+}
+
+[dir="rtl"] .game-info .category {
+    text-align: left;
+}
+
+[dir="rtl"] .hangman-draw {
+    margin-left: 0;
+    margin-right: 25px;
+}
+
+[dir="rtl"] .letters-guess {
+    flex-direction: row;
+}
+
+[dir="rtl"] .letters-guess span {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    [dir="rtl"] .hangman-draw {
+        margin-right: 0;
+    }
+    
+    [dir="rtl"] .game-info .category {
+        text-align: center;
+    }
+}

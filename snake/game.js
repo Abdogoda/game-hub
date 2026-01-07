@@ -10,6 +10,11 @@ let tileCount = isMobile ? 15 : (isTablet ? 20 : 25);
 canvas.width = gridSize * tileCount;
 canvas.height = gridSize * tileCount;
 
+// Translation helper
+const t = (key) => {
+    return window.i18n ? window.i18n.t(key) : key;
+};
+
 // Game State
 let gameActive = false;
 let score = 0;
@@ -45,12 +50,18 @@ let nextDirection = { x: 0, y: 0 };
 let food = { x: 0, y: 0 };
 
 // Speed settings
-const speedNames = ['Very Slow', 'Slow', 'Medium', 'Fast', 'Very Fast'];
 const speedValues = [200, 150, 100, 70, 50];
 
 // Update speed display
 function updateSpeedDisplay() {
     const speedIndex = parseInt(speedSlider.value) - 1;
+    const speedNames = [
+        t('snake.speedVerySlow'),
+        t('snake.speedSlow'),
+        t('snake.speedMedium'),
+        t('snake.speedFast'),
+        t('snake.speedVeryFast')
+    ];
     speedValue.textContent = speedNames[speedIndex];
     baseSpeed = speedValues[speedIndex];
 }
@@ -389,11 +400,11 @@ function showGameOverModal(isNewRecord) {
     finalScoreEl.textContent = score;
     
     if (isNewRecord && score > 0) {
-        modalTitle.textContent = '🎉 New Record! 🎉';
-        recordMessageEl.textContent = '⭐ You set a new high score! ⭐';
+        modalTitle.textContent = t('snake.newRecord');
+        recordMessageEl.textContent = t('snake.newRecordMessage');
     } else {
-        modalTitle.textContent = 'Game Over!';
-        recordMessageEl.textContent = score > 0 ? `High Score: ${highScore}` : 'Try again!';
+        modalTitle.textContent = t('snake.gameOver');
+        recordMessageEl.textContent = score > 0 ? `${t('snake.highScoreLabel')} ${highScore}` : t('snake.tryAgain');
     }
     
     gameOverModal.classList.add('show');

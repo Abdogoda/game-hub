@@ -1,47 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stealth Avoidance Game</title>
+    <title data-i18n="stealth.title">Stealth Avoidance Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕵️</text></svg>">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="game.css">
 </head>
 <body>
     <script src="../script.js"></script>
-    <a href="../index.html" class="back-to-menu">← Back to Menu</a>
+    <a href="../index.html" class="back-to-menu" data-i18n="stealth.backToMenu">← Back to Menu</a>
     
     <div class="container">
-        <h1 class="game-title">Stealth Mission</h1>
+        <h1 class="game-title" data-i18n="stealth.title">Stealth Mission</h1>
         
         <div class="game-stats">
             <div class="stat-box">
-                <h3>Level</h3>
+                <h3 data-i18n="stealth.level">Level</h3>
                 <div class="score-value" id="level">1</div>
             </div>
             <div class="stat-box">
-                <h3>Score</h3>
+                <h3 data-i18n="stealth.score">Score</h3>
                 <div class="score-value" id="score">0</div>
             </div>
             <div class="stat-box">
-                <h3>Best Level</h3>
+                <h3 data-i18n="stealth.bestLevel">Best Level</h3>
                 <div class="highscore-value" id="bestLevel">1</div>
             </div>
         </div>
 
         <div class="game-container">
             <div class="instructions">
-                <p>🕵️ Reach the <span class="goal">🎯 Goal</span> without being spotted!</p>
-                <p>⚠️ Avoid enemy <span class="vision">👁️ Vision Cones</span></p>
-                <p>🎮 Use <strong>WASD</strong> or <strong>Arrow Keys</strong> to move</p>
+                <p data-i18n="stealth.instructions1">🕵️ Reach the <span class="goal">🎯 Goal</span> without being spotted!</p>
+                <p data-i18n="stealth.instructions2">⚠️ Avoid enemy <span class="vision">👁️ Vision Cones</span></p>
+                <p data-i18n="stealth.instructions3">🎮 Use <strong>WASD</strong> or <strong>Arrow Keys</strong> to move</p>
             </div>
             
             <canvas id="gameCanvas"></canvas>
             
             <div class="game-controls">
-                <button id="startBtn" class="control-btn">Start Mission</button>
-                <button id="restartBtn" class="control-btn" style="display: none;">Retry</button>
+                <button id="startBtn" class="control-btn" data-i18n="stealth.startMission">Start Mission</button>
+                <button id="restartBtn" class="control-btn" style="display: none;" data-i18n="stealth.retry">Retry</button>
             </div>
         </div>
     </div>
@@ -49,20 +52,20 @@
     <!-- Success Modal -->
     <div id="successModal" class="modal">
         <div class="modal-content">
-            <h2>🎉 Mission Complete! 🎉</h2>
-            <p class="modal-message">Level <span id="completedLevel">1</span> cleared!</p>
-            <div class="modal-score">Score: <span id="modalScore">0</span></div>
-            <button id="nextLevelBtn" class="modal-btn">Next Mission</button>
+            <h2 data-i18n="stealth.missionComplete">🎉 Mission Complete! 🎉</h2>
+            <p class="modal-message" id="completedLevel"></p>
+            <div class="modal-score"><span data-i18n="stealth.scoreLabel">Score:</span> <span id="modalScore">0</span></div>
+            <button id="nextLevelBtn" class="modal-btn" data-i18n="stealth.nextMission">Next Mission</button>
         </div>
     </div>
 
     <!-- Game Over Modal -->
     <div id="gameOverModal" class="modal">
         <div class="modal-content">
-            <h2>🚨 Spotted! 🚨</h2>
-            <p class="modal-message">Mission Failed</p>
-            <div class="modal-score">Score: <span id="gameOverScore">0</span></div>
-            <button id="retryBtn" class="modal-btn">Retry Mission</button>
+            <h2 data-i18n="stealth.spotted">🚨 Spotted! 🚨</h2>
+            <p class="modal-message" data-i18n="stealth.missionFailed">Mission Failed</p>
+            <div class="modal-score"><span data-i18n="stealth.scoreLabel">Score:</span> <span id="gameOverScore">0</span></div>
+            <button id="retryBtn" class="modal-btn" data-i18n="stealth.retryMission">Retry Mission</button>
         </div>
     </div>
 
@@ -70,6 +73,7 @@
     <audio id="successSound" src="../assets/audio/success.mp3"></audio>
     <audio id="failSound" src="../assets/audio/fail.mp3"></audio>
 
+    <script src="../i18n.js"></script>
     <script src="game.js"></script>
 </body>
 </html>

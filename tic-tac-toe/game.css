@@ -4,6 +4,19 @@
     box-sizing: border-box;
 }
 
+/* ============================================
+   RTL SUPPORT - Arabic language styling
+   ============================================ */
+
+[dir="rtl"] .info {
+    direction: ltr;
+}
+
+[dir="rtl"] .title,
+[dir="rtl"] .subtitle {
+    text-align: center;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--theme-gradient);

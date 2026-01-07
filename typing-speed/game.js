@@ -5,6 +5,11 @@ const wordLists = {
     hard: ['computer', 'keyboard', 'elephant', 'beautiful', 'important', 'amazing', 'generation', 'fantastic', 'wonderful', 'adventure', 'dictionary', 'photograph', 'technology', 'psychology', 'philosophy', 'restaurant', 'university', 'comfortable', 'strawberry', 'basketball', 'understand', 'experience', 'government', 'temperature', 'mathematics']
 };
 
+// Translation helper
+const t = (key) => {
+    return window.i18n ? window.i18n.t(key) : key;
+};
+
 // Game State
 let gameActive = false;
 let score = 0;
@@ -208,9 +213,9 @@ function showGameOverModal(wpm, finalScore, accuracy) {
     const rank = currentDifficultyScores.findIndex(s => s.wpm === wpm && s.score === finalScore) + 1;
     
     if (rank > 0 && rank <= 5) {
-        recordMessageEl.textContent = `🎉 You ranked #${rank} in ${difficulty} mode! 🎉`;
+        recordMessageEl.textContent = t('typingSpeed.rankedMessage').replace('{rank}', rank).replace('{difficulty}', difficulty);
     } else {
-        recordMessageEl.textContent = wpm > 0 ? 'Keep practicing to improve!' : 'Try again!';
+        recordMessageEl.textContent = wpm > 0 ? t('typingSpeed.keepPracticing') : t('typingSpeed.tryAgain');
     }
     
     gameOverModal.classList.add('show');
@@ -243,7 +248,7 @@ function resetGame() {
     
     closeModal();
     
-    wordDisplay.textContent = 'Click Start to Begin';
+    wordDisplay.textContent = t('typingSpeed.clickStart');
     wordInput.value = '';
     
     startBtn.style.display = 'inline-block';
@@ -285,7 +290,7 @@ function updateLeaderboard() {
     leaderboardList.innerHTML = '';
     
     if (leaderboard.length === 0) {
-        leaderboardList.innerHTML = '<p style="color: var(--text-color); opacity: 0.7;">No scores yet. Be the first!</p>';
+        leaderboardList.innerHTML = `<p style="color: var(--text-color); opacity: 0.7;">${t('typingSpeed.noScoresYet')}</p>`;
         return;
     }
     

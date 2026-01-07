@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Hub - Play Fun Games</title>
+    <title data-i18n="main.title">Game Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="assets/images/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <button class="sound-toggle" id="soundToggle" title="Toggle Sound">
         <span class="sound-icon">🔊</span>
+    </button>
+
+    <button class="lang-toggle" id="langToggle" title="Toggle Language">
+        <span class="lang-text">EN</span>
     </button>
 
     <div class="theme-switcher">
@@ -34,7 +41,7 @@
     </div>
 
     <div class="container">
-        <header class="header">
+        <header class="header" dir="ltr">
             <h1 class="title">
                 <span class="letter">G</span>
                 <span class="letter">a</span>
@@ -45,82 +52,82 @@
                 <span class="letter">u</span>
                 <span class="letter">b</span>
             </h1>
-            <p class="subtitle">Welcome to the ultimate gaming experience! Choose your favorite game and have fun!</p>
+            <p class="subtitle" data-i18n="main.subtitle">Welcome to the ultimate gaming experience! Choose your favorite game and have fun!</p>
         </header>
 
         <div class="games-grid">
             <a href="hangman/index.html" class="game-card" data-game="hangman">
                 <div class="game-icon">🎯</div>
-                <h2 class="game-title">Hangman Game</h2>
-                <p class="game-description">Guess the word before the hangman is complete!</p>
-                <span class="play-btn">Play Now →</span>
+                <h2 class="game-title" data-i18n="games.hangman.title">Hangman Game</h2>
+                <p class="game-description" data-i18n="games.hangman.description">Guess the word before the hangman is complete!</p>
+                <span class="play-btn" data-i18n="main.playNow">Play Now →</span>
             </a>
 
             <a href="tic-tac-toe/index.html" class="game-card" data-game="xo">
                 <div class="game-icon">⭕</div>
-                <h2 class="game-title">Tic Tac Toe</h2>
-                <p class="game-description">Classic X and O game. Challenge yourself!</p>
-                <span class="play-btn">Play Now →</span>
+                <h2 class="game-title" data-i18n="games.ticTacToe.title">Tic Tac Toe</h2>
+                <p class="game-description" data-i18n="games.ticTacToe.description">Classic X and O game. Challenge yourself!</p>
+                <span class="play-btn" data-i18n="main.playNow">Play Now →</span>
             </a>
 
             <a href="memory-card/index.html" class="game-card" data-game="memory">
                 <div class="game-icon">🎴</div>
-                <h2 class="game-title">Memory Match</h2>
-                <p class="game-description">Test your memory by matching card pairs!</p>
-                <span class="play-btn">Play Now →</span>
+                <h2 class="game-title" data-i18n="games.memory.title">Memory Match</h2>
+                <p class="game-description" data-i18n="games.memory.description">Test your memory by matching card pairs!</p>
+                <span class="play-btn" data-i18n="main.playNow">Play Now →</span>
             </a>
 
             <a href="whack-a-mole/index.html" class="game-card" data-game="whack">
                 <div class="game-icon">🐹</div>
-                <h2 class="game-title">Whack-a-Mole</h2>
-                <p class="game-description">Click the mole before it disappears!</p>
-                <span class="play-btn">Play Now →</span>
+                <h2 class="game-title" data-i18n="games.whackAMole.title">Whack-a-Mole</h2>
+                <p class="game-description" data-i18n="games.whackAMole.description">Click the mole before it disappears!</p>
+                <span class="play-btn" data-i18n="main.playNow">Play Now →</span>
             </a>
 
             <a href="platform-jumper/index.html" class="game-card" data-game="platform">
                 <div class="game-icon">🏃</div>
-                <h2 class="game-title">Platform Jumper</h2>
-                <p class="game-description">Jump between platforms Mario-style!</p>
-                <span class="play-btn">Play Now →</span>
+                <h2 class="game-title" data-i18n="games.platformJumper.title">Platform Jumper</h2>
+                <p class="game-description" data-i18n="games.platformJumper.description">Jump between platforms Mario-style!</p>
+                <span class="play-btn" data-i18n="main.playNow">Play Now →</span>
             </a>
 
             <a href="snake/index.html" class="game-card" data-game="snake">
                 <div class="game-icon">🐍</div>
-                <h2 class="game-title">Snake Game</h2>
-                <p class="game-description">Classic snake collecting food!</p>
-                <span class="play-btn">Play Now →</span>
+                <h2 class="game-title" data-i18n="games.snake.title">Snake Game</h2>
+                <p class="game-description" data-i18n="games.snake.description">Classic snake collecting food!</p>
+                <span class="play-btn" data-i18n="main.playNow">Play Now →</span>
             </a>
 
             <a href="typing-speed/index.html" class="game-card" data-game="typing">
                 <div class="game-icon">⌨️</div>
-                <h2 class="game-title">Typing Speed Test</h2>
-                <p class="game-description">Type words as fast as possible!</p>
-                <span class="play-btn">Play Now →</span>
+                <h2 class="game-title" data-i18n="games.typingSpeed.title">Typing Speed Test</h2>
+                <p class="game-description" data-i18n="games.typingSpeed.description">Type words as fast as possible!</p>
+                <span class="play-btn" data-i18n="main.playNow">Play Now →</span>
             </a>
 
             <a href="reaction-time/index.html" class="game-card" data-game="reaction">
                 <div class="game-icon">⚡</div>
-                <h2 class="game-title">Reaction Time Test</h2>
-                <p class="game-description">Click when the screen turns green!</p>
-                <span class="play-btn">Play Now →</span>
+                <h2 class="game-title" data-i18n="games.reactionTime.title">Reaction Time Test</h2>
+                <p class="game-description" data-i18n="games.reactionTime.description">Click when the screen turns green!</p>
+                <span class="play-btn" data-i18n="main.playNow">Play Now →</span>
             </a>
 
             <a href="stealth-game/index.html" class="game-card" data-game="stealth">
                 <div class="game-icon">🕵️</div>
-                <h2 class="game-title">Stealth Mission</h2>
-                <p class="game-description">Avoid enemy vision cones!</p>
-                <span class="play-btn">Play Now →</span>
+                <h2 class="game-title" data-i18n="games.stealth.title">Stealth Mission</h2>
+                <p class="game-description" data-i18n="games.stealth.description">Avoid enemy vision cones!</p>
+                <span class="play-btn" data-i18n="main.playNow">Play Now →</span>
             </a>
 
             <a href="football-guesser/index.html" class="game-card" data-game="football">
                 <div class="game-icon">⚽</div>
-                <h2 class="game-title">Football Guesser</h2>
-                <p class="game-description">Guess the football player with AI!</p>
-                <span class="play-btn">Play Now →</span>
+                <h2 class="game-title" data-i18n="games.football.title">Football Guesser</h2>
+                <p class="game-description" data-i18n="games.football.description">Guess the football player with AI!</p>
+                <span class="play-btn" data-i18n="main.playNow">Play Now →</span>
             </a>
         </div>
 
-        <footer class="footer">© 2026 GameHub by <span class="creator"><a href="https://abdogoda.github.io/AG/" target="_blank" rel="noopener noreferrer">Abdulrhman Goda</a></span></footer>
+        <footer class="footer"><span data-i18n="main.footer">© 2026 GameHub by</span> <span class="creator"><a href="https://abdogoda.github.io/AG/" target="_blank" rel="noopener noreferrer">Abdulrhman Goda</a></span></footer>
     </div>
 
     <div class="particles">
@@ -136,6 +143,7 @@
         <div class="particle"></div>
     </div>
 
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

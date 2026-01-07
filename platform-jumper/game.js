@@ -6,6 +6,11 @@ const ctx = canvas.getContext('2d');
 canvas.width = 600;
 canvas.height = 500;
 
+// Translation helper
+const t = (key) => {
+    return window.i18n ? window.i18n.t(key) : key;
+};
+
 // Game State
 let gameActive = false;
 let score = 0;
@@ -327,11 +332,11 @@ function showGameOverModal(isNewRecord) {
     finalScoreEl.textContent = score;
     
     if (isNewRecord && score > 0) {
-        modalTitle.textContent = '🎉 New Record! 🎉';
-        recordMessageEl.textContent = '⭐ You set a new high score! ⭐';
+        modalTitle.textContent = t('platformJumper.newRecord');
+        recordMessageEl.textContent = t('platformJumper.newRecordMessage');
     } else {
-        modalTitle.textContent = 'Game Over!';
-        recordMessageEl.textContent = score > 0 ? `High Score: ${highScore}` : 'Try again!';
+        modalTitle.textContent = t('platformJumper.gameOver');
+        recordMessageEl.textContent = score > 0 ? `${t('platformJumper.highScoreLabel')} ${highScore}` : t('platformJumper.tryAgain');
     }
     
     gameOverModal.classList.add('show');

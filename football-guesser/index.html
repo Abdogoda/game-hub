@@ -1,38 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Guesser</title>
+    <title data-i18n="footballGuesser.title">Football Guesser</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="game.css">
 </head>
 <body>
     <script src="../script.js"></script>
-    <a href="../index.html" class="back-to-menu">← Back to Menu</a>
+    <a href="../index.html" class="back-to-menu" data-i18n="footballGuesser.backToMenu">← Back to Menu</a>
     
     <div class="container">
-        <h1 class="game-title">Football Guesser</h1>
-        <p class="game-subtitle">Can you guess the football player in 10 questions?</p>
+        <h1 class="game-title" data-i18n="footballGuesser.title">Football Guesser</h1>
+        <p class="game-subtitle" data-i18n="footballGuesser.subtitle">Can you guess the football player in 10 questions?</p>
 
         <div class="welcome-screen" id="welcomeScreen">
             <div class="welcome-content">
                 <div class="welcome-icon">⚽</div>
-                <h2>How to Play</h2>
+                <h2 data-i18n="footballGuesser.howToPlay">How to Play</h2>
                 <ul class="instructions">
-                    <li>✅ AI will secretly choose a football player</li>
-                    <li>❓ Ask up to 10 yes/no questions</li>
-                    <li>🤔 Questions about club, nationality, position, etc.</li>
-                    <li>🎯 Try to guess the player's name</li>
+                    <li data-i18n="footballGuesser.instructions.1">✅ AI will secretly choose a football player</li>
+                    <li data-i18n="footballGuesser.instructions.2">❓ Ask up to 10 yes/no questions</li>
+                    <li data-i18n="footballGuesser.instructions.3">🤔 Questions about club, nationality, position, etc.</li>
+                    <li data-i18n="footballGuesser.instructions.4">🎯 Try to guess the player's name</li>
                 </ul>
-                <button class="start-game-btn" id="startGameBtn">Start Game</button>
+                <button class="start-game-btn" id="startGameBtn" data-i18n="footballGuesser.startGame">Start Game</button>
             </div>
         </div>
 
         <div class="game-container" id="gameContainer" style="display: none;">
             <div class="questions-counter" id="questionsCounter">
-                <span class="counter-label">Questions Remaining:</span>
+                <span class="counter-label" data-i18n="footballGuesser.questionsRemaining">Questions Remaining:</span>
                 <span class="counter-value" id="questionsLeft">10</span>
             </div>
             
@@ -41,13 +44,13 @@
             </div>
             
             <div class="input-area">
-                <input type="text" id="questionInput" class="question-input" placeholder="Ask a yes/no question..." autocomplete="off">
-                <button id="askBtn" class="ask-btn">Ask</button>
+                <input type="text" id="questionInput" class="question-input" data-i18n-placeholder="footballGuesser.placeholders.askQuestion" placeholder="Ask a yes/no question..." autocomplete="off">
+                <button id="askBtn" class="ask-btn" data-i18n="footballGuesser.buttons.ask">Ask</button>
             </div>
 
             <div class="guess-area" style="display: none;" id="guessArea">
-                <input type="text" id="guessInput" class="question-input" placeholder="Type the player's name..." autocomplete="off">
-                <button id="guessBtn" class="guess-btn">Guess Player</button>
+                <input type="text" id="guessInput" class="question-input" data-i18n-placeholder="footballGuesser.placeholders.guessPlayer" placeholder="Type the player's name..." autocomplete="off">
+                <button id="guessBtn" class="guess-btn" data-i18n="footballGuesser.buttons.guess">Guess Player</button>
             </div>
         </div>
 
@@ -58,7 +61,7 @@
             <div class="player-card-wrapper" id="playerCard" style="display: none;">
                 <div class="player-card">
                     <div class="card-header">
-                        <div class="card-title">The Player Was</div>
+                        <div class="card-title" data-i18n="footballGuesser.results.thePlayerWas">The Player Was</div>
                         <div class="player-photo" id="playerPhoto">
                             <div class="photo-placeholder">⚽</div>
                         </div>
@@ -66,62 +69,63 @@
                     
                     <div class="player-info-section">
                         <div class="info-item">
-                            <span class="info-label">Full name:</span>
+                            <span class="info-label" data-i18n="footballGuesser.results.fullName">Full name:</span>
                             <span class="info-value" id="fullName">Loading...</span>
                         </div>
                         
                         <div class="info-item">
-                            <span class="info-label">Date of birth/Age:</span>
+                            <span class="info-label" data-i18n="footballGuesser.results.birthInfo">Date of birth/Age:</span>
                             <span class="info-value" id="birthInfo">--</span>
                         </div>
                         
                         <div class="info-item">
-                            <span class="info-label">Place of birth:</span>
+                            <span class="info-label" data-i18n="footballGuesser.results.birthPlace">Place of birth:</span>
                             <span class="info-value" id="birthPlace">--</span>
                         </div>
                         
                         <div class="info-item">
-                            <span class="info-label">Height:</span>
+                            <span class="info-label" data-i18n="footballGuesser.results.height">Height:</span>
                             <span class="info-value" id="height">--</span>
                         </div>
                         
                         <div class="info-item">
-                            <span class="info-label">Citizenship:</span>
+                            <span class="info-label" data-i18n="footballGuesser.results.citizenship">Citizenship:</span>
                             <span class="info-value" id="citizenship">--</span>
                         </div>
                         
                         <div class="info-item">
-                            <span class="info-label">Position:</span>
+                            <span class="info-label" data-i18n="footballGuesser.results.position">Position:</span>
                             <span class="info-value" id="position">--</span>
                         </div>
                         
                         <div class="info-item">
-                            <span class="info-label">Foot:</span>
+                            <span class="info-label" data-i18n="footballGuesser.results.foot">Foot:</span>
                             <span class="info-value" id="foot">--</span>
                         </div>
                         
                         <div class="info-item">
-                            <span class="info-label">Current club:</span>
+                            <span class="info-label" data-i18n="footballGuesser.results.currentClub">Current club:</span>
                             <span class="info-value" id="currentClub">--</span>
                         </div>
                         
                         <div class="info-item">
-                            <span class="info-label">Famous clubs:</span>
+                            <span class="info-label" data-i18n="footballGuesser.results.famousClubs">Famous clubs:</span>
                             <span class="info-value" id="famousClubs">--</span>
                         </div>
                         
                         <div class="info-item highlight">
-                            <span class="info-label">Notable achievements:</span>
+                            <span class="info-label" data-i18n="footballGuesser.results.achievements">Notable achievements:</span>
                             <span class="info-value" id="achievements">--</span>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <button id="restartBtn" class="control-btn">Play Again</button>
+            <button id="restartBtn" class="control-btn" data-i18n="footballGuesser.buttons.playAgain">Play Again</button>
         </div>
     </div>
 
+    <script src="../i18n.js"></script>
     <script src="game.js"></script>
 </body>
 </html>

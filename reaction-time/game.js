@@ -6,6 +6,11 @@ let startTime = null;
 let waitTimeout = null;
 let bestTime = null;
 
+// Translation helper
+const t = (key) => {
+    return window.i18n ? window.i18n.t(key) : key;
+};
+
 // DOM Elements
 const gameScreen = document.getElementById('gameScreen');
 const instruction = document.getElementById('instruction');
@@ -76,7 +81,7 @@ function updateAttemptsList() {
     attemptsListEl.innerHTML = '';
     
     if (attempts.length === 0) {
-        attemptsListEl.innerHTML = '<p style="color: var(--text-color); opacity: 0.7;">No attempts yet</p>';
+        attemptsListEl.innerHTML = `<p style="color: var(--text-color); opacity: 0.7;">${t('reactionTime.noAttemptsYet')}</p>`;
         return;
     }
     
@@ -106,7 +111,7 @@ function startTest() {
     
     const message = document.createElement('div');
     message.className = 'message';
-    message.textContent = 'Wait for GREEN...';
+    message.textContent = t('reactionTime.waitForGreen');
     gameScreen.appendChild(message);
     
     // Random delay between 2-5 seconds
@@ -126,7 +131,7 @@ function showGreen() {
     
     const message = gameScreen.querySelector('.message');
     if (message) {
-        message.textContent = 'CLICK NOW!';
+        message.textContent = t('reactionTime.clickNow');
     }
     
     startTime = Date.now();
@@ -146,7 +151,7 @@ function handleClick() {
         gameScreen.className = 'game-screen too-early';
         const message = gameScreen.querySelector('.message');
         if (message) {
-            message.textContent = 'Too Early! 😅';
+            message.textContent = t('reactionTime.tooEarlyEmoji');
         }
         
         playSoundEffect(tooEarlySound);
@@ -170,7 +175,7 @@ function handleClick() {
         gameScreen.className = 'game-screen waiting';
         const message = gameScreen.querySelector('.message');
         if (message) {
-            message.textContent = `${reactionTime}ms! 🎯`;
+            message.textContent = t('reactionTime.msResult').replace('{time}', reactionTime);
             message.style.color = '#4CAF50';
         }
         
@@ -222,11 +227,11 @@ function showResults() {
     const rank = globalLeaderboard.findIndex(entry => entry.best === best && entry.average === average) + 1;
     
     if (rank > 0 && rank <= 5) {
-        recordMessageEl.textContent = `🎉 You ranked #${rank} on the leaderboard! 🎉`;
+        recordMessageEl.textContent = t('reactionTime.rankedMessage').replace('{rank}', rank);
     } else if (best === bestTime) {
-        recordMessageEl.textContent = '🏆 New personal best! 🏆';
+        recordMessageEl.textContent = t('reactionTime.newPersonalBest');
     } else {
-        recordMessageEl.textContent = 'Great job! Keep practicing to improve!';
+        recordMessageEl.textContent = t('reactionTime.keepPracticing');
     }
     
     gameOverModal.classList.add('show');
@@ -265,7 +270,7 @@ function updateLeaderboard() {
     leaderboardList.innerHTML = '';
     
     if (leaderboard.length === 0) {
-        leaderboardList.innerHTML = '<p style="color: var(--text-color); opacity: 0.7;">No records yet. Be the first!</p>';
+        leaderboardList.innerHTML = `<p style="color: var(--text-color); opacity: 0.7;">${t('reactionTime.noRecordsYet')}</p>`;
         return;
     }
     

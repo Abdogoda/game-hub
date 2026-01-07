@@ -1069,3 +1069,58 @@
         height: 70px;
     }
 }
+
+/* ============================================
+   RTL SUPPORT - Arabic language styling
+   ============================================ */
+
+[dir="rtl"] .back-to-menu {
+    left: auto;
+    right: 20px;
+}
+
+[dir="rtl"] .instructions {
+    text-align: right;
+}
+
+[dir="rtl"] .message {
+    text-align: right;
+}
+
+[dir="rtl"] .user-message {
+    align-self: flex-end;
+}
+
+[dir="rtl"] .ai-message,
+[dir="rtl"] .system-message {
+    align-self: flex-start;
+}
+
+[dir="rtl"] .info-item {
+    border-left: none;
+    border-right: 4px solid rgba(255, 215, 0, 0.3);
+}
+
+[dir="rtl"] .info-label {
+    text-align: right;
+}
+
+[dir="rtl"] .info-value {
+    text-align: right;
+}
+
+[dir="rtl"] .game-subtitle,
+[dir="rtl"] .welcome-content h2 {
+    text-align: center;
+}
+
+body.rtl {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@media (max-width: 768px) {
+    [dir="rtl"] .back-to-menu {
+        right: 15px;
+        left: auto;
+    }
+}

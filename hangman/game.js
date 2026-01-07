@@ -1,3 +1,8 @@
+// Translation helper
+const t = (key) => {
+    return window.i18n ? window.i18n.t(key) : key;
+};
+
 // Letters 
 let letters = Array.from("دجحخهعغفقثصضذطكمنتالبيسشئءؤرىةوزظ");
 let lettersCon = document.querySelector((".letters"));
@@ -90,7 +95,7 @@ document.addEventListener("click", (e) => {
 })
 function failGame(){
     let div = document.createElement("div");
-    let divText = document.createTextNode(`Game Over, The Word Is  ${randomValuesValue}`);
+    let divText = document.createTextNode(`${t('hangman.gameOver')} ${randomValuesValue}`);
     div.appendChild(divText);
     div.className = "endGame";
     document.querySelector(".container").appendChild(div);
@@ -102,7 +107,7 @@ function failGame(){
 function successGame(){
     playSoundEffect(document.getElementById("success"));
     let div = document.createElement("div");
-    let divText = document.createTextNode(`You Win`);
+    let divText = document.createTextNode(t('hangman.youWin'));
     div.appendChild(divText);
     div.className = "endGame";
     document.querySelector(".container").appendChild(div);

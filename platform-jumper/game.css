@@ -9,6 +9,26 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+/* ============================================
+   RTL SUPPORT - Arabic language styling
+   ============================================ */
+
+[dir="rtl"] .game-title {
+    text-align: center;
+}
+
+[dir="rtl"] .stats {
+    direction: ltr;
+}
+
+[dir="rtl"] .instructions {
+    text-align: center;
+}
+
+[dir="rtl"] .modal-content {
+    text-align: center;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--primary-gradient);

@@ -1,50 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake Game</title>
+    <title data-i18n="snake.title">Snake Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="game.css">
 </head>
 <body>
     <script src="../script.js"></script>
-    <a href="../index.html" class="back-to-menu">← Back to Menu</a>
+    <a href="../index.html" class="back-to-menu" data-i18n="snake.backToMenu">← Back to Menu</a>
     
     <div class="container">
-        <h1 class="game-title">Snake Game</h1>
+        <h1 class="game-title" data-i18n="snake.title">Snake Game</h1>
         
         <div class="game-stats">
             <div class="stat-box">
-                <h3>Score</h3>
+                <h3 data-i18n="snake.score">Score</h3>
                 <div class="score-value" id="score">0</div>
             </div>
             <div class="stat-box">
-                <h3>High Score</h3>
+                <h3 data-i18n="snake.highScore">High Score</h3>
                 <div class="highscore-value" id="highScore">0</div>
             </div>
         </div>
 
         <div class="speed-control">
-            <label for="speedSlider">Speed: <span id="speedValue">Medium</span></label>
+            <label for="speedSlider"><span data-i18n="snake.speed">Speed:</span> <span id="speedValue">Medium</span></label>
             <input type="range" id="speedSlider" min="1" max="5" value="3" step="1">
             <div class="speed-labels">
-                <span>Slow</span>
-                <span>Fast</span>
+                <span data-i18n="snake.slow">Slow</span>
+                <span data-i18n="snake.fast">Fast</span>
             </div>
         </div>
 
         <div class="game-container">
             <canvas id="gameCanvas"></canvas>
             <div class="game-controls">
-                <button id="startBtn" class="control-btn">Start Game</button>
-                <button id="restartBtn" class="control-btn" style="display: none;">Restart</button>
+                <button id="startBtn" class="control-btn" data-i18n="snake.startGame">Start Game</button>
+                <button id="restartBtn" class="control-btn" style="display: none;" data-i18n="snake.restart">Restart</button>
             </div>
             <div class="instructions">
-                <p>🎮 Use <strong>ARROW KEYS</strong> or <strong>WASD</strong> to move</p>
-                <p>🍎 Collect food to grow and score points</p>
-                <p>⚠️ Don't hit walls or yourself!</p>
+                <p data-i18n="snake.instructions1">🎮 Use <strong>ARROW KEYS</strong> or <strong>WASD</strong> to move</p>
+                <p data-i18n="snake.instructions2">🍎 Collect food to grow and score points</p>
+                <p data-i18n="snake.instructions3">⚠️ Don't hit walls or yourself!</p>
             </div>
         </div>
     </div>
@@ -52,11 +55,11 @@
     <!-- Game Over Modal -->
     <div id="gameOverModal" class="modal">
         <div class="modal-content">
-            <h2 id="modalTitle">Game Over!</h2>
-            <p id="modalMessage">Your score:</p>
+            <h2 id="modalTitle" data-i18n="snake.gameOver">Game Over!</h2>
+            <p id="modalMessage" data-i18n="snake.yourScore">Your score:</p>
             <div class="final-score" id="finalScore">0</div>
             <p id="recordMessage"></p>
-            <button id="playAgainBtn" class="modal-btn">Play Again</button>
+            <button id="playAgainBtn" class="modal-btn" data-i18n="snake.playAgain">Play Again</button>
         </div>
     </div>
 
@@ -64,6 +67,7 @@
     <audio id="eatSound" src="../assets/audio/success.mp3"></audio>
     <audio id="gameOverSound" src="../assets/audio/fail.mp3"></audio>
 
+    <script src="../i18n.js"></script>
     <script src="game.js"></script>
 </body>
 </html>

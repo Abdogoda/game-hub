@@ -124,7 +124,7 @@ body {
 .sound-toggle {
     position: fixed;
     top: 25px;
-    right: 20px;
+    left: 20px;
     width: 50px;
     height: 50px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
@@ -177,6 +177,48 @@ body {
     75% { transform: translateX(3px); }
 }
 
+/* ============================================
+   LANGUAGE TOGGLE BUTTON - Global language switcher
+   ============================================ */
+
+.lang-toggle {
+    position: fixed;
+    top: 25px;
+    left: 80px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+}
+
+.lang-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.95));
+}
+
+.lang-toggle:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.lang-toggle .lang-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
 /* Responsive adjustments for sound toggle */
 @media (max-width: 768px) {
     .sound-toggle {
@@ -189,6 +231,13 @@ body {
     .sound-toggle .sound-icon {
         font-size: 1.2rem;
     }
+    
+    .lang-toggle {
+        width: 45px;
+        height: 45px;
+        top: 15px;
+        right: 70px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -197,6 +246,17 @@ body {
         height: 42px;
         top: 12px;
         right: 12px;
+    }
+    
+    .lang-toggle {
+        width: 42px;
+        height: 42px;
+        top: 12px;
+        right: 62px;
+    }
+    
+    .lang-toggle .lang-text {
+        font-size: 0.8rem;
     }
     
     .sound-toggle .sound-icon {
@@ -250,7 +310,7 @@ body.theme-white .particle {
 .theme-switcher {
     position: fixed;
     top: 20px;
-    right: 80px;
+    right: 20px;
     display: flex;
     gap: 10px;
     background: var(--card-bg);
@@ -670,7 +730,88 @@ body.theme-cyan .creator a:hover {
 
     .subtitle {
         font-size: 1rem;
-        padding: 0 20px;
+    }
+}
+
+/* ============================================
+   RTL SUPPORT - Arabic language styling
+   ============================================ */
+
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] .title,
+[dir="rtl"] .header {
+    text-align: center;
+}
+
+[dir="rtl"] .theme-switcher {
+    right: auto;
+    left: 20px;
+}
+
+[dir="rtl"] .back-to-menu {
+    left: auto;
+    right: 20px;
+}
+
+[dir="rtl"] .sound-toggle {
+    left: auto;
+    right: 20px;
+}
+
+[dir="rtl"] .lang-toggle {
+    left: auto;
+    right: 80px;
+}
+
+[dir="rtl"] .play-btn {
+    direction: ltr;
+}
+
+[dir="rtl"] .game-card {
+    text-align: center;
+}
+
+[dir="rtl"] .subtitle,
+[dir="rtl"] .game-description {
+    text-align: center;
+}
+
+body.rtl {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* RTL Responsive adjustments */
+@media (max-width: 768px) {
+    [dir="rtl"] .sound-toggle {
+        left: 15px;
+        right: auto;
+    }
+    
+    [dir="rtl"] .lang-toggle {
+        left: 70px;
+        right: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    [dir="rtl"] .sound-toggle {
+        left: 10px;
+        right: auto;
+        top: 70px;
+    }
+    
+    [dir="rtl"] .lang-toggle {
+        left: 60px;
+        right: auto;
+        top: 70px;
+    }
+
+    [dir="rtl"] .theme-switcher {
+        left: 10px;
+        right: 10px;
     }
 
     .games-grid {
@@ -680,7 +821,7 @@ body.theme-cyan .creator a:hover {
 
     .theme-switcher {
         top: 10px;
-        right: 60px;
+        right: 10px;
         left: 10px;
         padding: 8px;
         gap: 8px;
@@ -715,8 +856,6 @@ body.theme-cyan .creator a:hover {
     }
 
     .theme-switcher {
-        right: 60px;
-        left: 10px;
         gap: 6px;
     }
 

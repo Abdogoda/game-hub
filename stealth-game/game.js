@@ -5,6 +5,11 @@ const ctx = canvas.getContext('2d');
 canvas.width = 600;
 canvas.height = 600;
 
+// Translation helper
+const t = (key) => {
+    return window.i18n ? window.i18n.t(key) : key;
+};
+
 // Game State
 let gameActive = false;
 let currentLevel = 1;
@@ -335,7 +340,9 @@ function levelComplete() {
     playSoundEffect(successSound);
     
     // Show success modal
-    completedLevelEl.textContent = currentLevel;
+    if (completedLevelEl) {
+        completedLevelEl.textContent = t('stealth.levelCleared').replace('{level}', currentLevel);
+    }
     modalScoreEl.textContent = score;
     successModal.classList.add('show');
 }

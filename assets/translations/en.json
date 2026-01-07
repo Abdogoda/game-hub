@@ -1,0 +1,267 @@
+{
+  "main": {
+    "title": "Game Hub",
+    "subtitle": "Welcome to the ultimate gaming experience! Choose your favorite game and have fun!",
+    "footer": "© 2026 GameHub by",
+    "playNow": "Play Now"
+  },
+  "games": {
+    "hangman": {
+      "title": "Hangman Game",
+      "description": "Guess the word before the hangman is complete!"
+    },
+    "ticTacToe": {
+      "title": "Tic Tac Toe",
+      "description": "Classic X and O game. Challenge yourself!"
+    },
+    "memory": {
+      "title": "Memory Match",
+      "description": "Test your memory by matching card pairs!"
+    },
+    "whackAMole": {
+      "title": "Whack-a-Mole",
+      "description": "Click the mole before it disappears!"
+    },
+    "platformJumper": {
+      "title": "Platform Jumper",
+      "description": "Jump between platforms Mario-style!"
+    },
+    "snake": {
+      "title": "Snake Game",
+      "description": "Classic snake collecting food!"
+    },
+    "typingSpeed": {
+      "title": "Typing Speed Test",
+      "description": "Type words as fast as possible!"
+    },
+    "reactionTime": {
+      "title": "Reaction Time Test",
+      "description": "Click when the screen turns green!"
+    },
+    "stealth": {
+      "title": "Stealth Mission",
+      "description": "Avoid enemy vision cones!"
+    },
+    "football": {
+      "title": "Football Guesser",
+      "description": "Guess the football player with AI!"
+    }
+  },
+  "footballGuesser": {
+    "title": "Football Guesser",
+    "subtitle": "Can you guess the football player in 10 questions?",
+    "howToPlay": "How to Play",
+    "instructions": {
+      "1": "AI will secretly choose a football player",
+      "2": "Ask up to 10 yes/no questions",
+      "3": "Questions about club, nationality, position, etc.",
+      "4": "Try to guess the player's name"
+    },
+    "startGame": "Start Game",
+    "questionsRemaining": "Questions Remaining:",
+    "backToMenu": "← Back to Menu",
+    "placeholders": {
+      "askQuestion": "Ask a yes/no question...",
+      "guessPlayer": "Type the player's name..."
+    },
+    "buttons": {
+      "ask": "Ask",
+      "guess": "Guess Player",
+      "playAgain": "Play Again"
+    },
+    "messages": {
+      "initializing": "Initializing AI... Please wait.",
+      "aiReady": "AI has secretly chosen a football player. You have 10 questions to guess who it is!",
+      "askQuestions": "Ask yes/no questions about nationality, club, position, achievements, etc.",
+      "connectionError": "Error: Unable to connect to AI. Please check your internet connection.",
+      "askDetailed": "Please ask a more detailed question.",
+      "guessDetected": "Detected a player guess! Use the \"Guess Player\" button below.",
+      "unclearResponse": "AI response unclear. Question not counted. Please rephrase.",
+      "canGuessNow": "Tip: You can start making guesses using the guess button below!",
+      "threeLeft": "Only 3 questions left! Use the \"Guess Player\" option.",
+      "networkError": "Network error. Your question was not counted. Please try again.",
+      "validName": "Please enter a valid player name.",
+      "incorrect": "Incorrect! {count} {questions} remaining.",
+      "questionsPlural": "questions",
+      "questionsSingular": "question",
+      "youWon": "🎉 You Won!",
+      "gameOver": "😔 Game Over",
+      "betterLuck": "Better luck next time!",
+      "congratulations": "🎉 Congratulations! You correctly guessed {guess}!"
+    },
+    "results": {
+      "thePlayerWas": "The Player Was",
+      "fullName": "Full name:",
+      "birthInfo": "Date of birth/Age:",
+      "birthPlace": "Place of birth:",
+      "height": "Height:",
+      "citizenship": "Citizenship:",
+      "position": "Position:",
+      "foot": "Foot:",
+      "currentClub": "Current club:",
+      "famousClubs": "Famous clubs:",
+      "achievements": "Notable achievements:"
+    }
+  },
+  "hangman": {
+    "title": "Hangman Game",
+    "backToMenu": "← Back to Menu",
+    "wordFrom": "Word From:",
+    "gameOver": "Game Over, The Word Is",
+    "youWin": "You Win"
+  },
+  "ticTacToe": {
+    "title": "TIC TAC TOE",
+    "subtitle": "GAME",
+    "backToMenu": "← Back to Menu",
+    "xTurn": "X turn",
+    "oTurn": "O turn",
+    "winner": "Winner",
+    "endGame": "END GAME"
+  },
+  "memoryCard": {
+    "title": "Memory Card Game",
+    "backToMenu": "← Back to Menu",
+    "moves": "Moves:",
+    "time": "Time:",
+    "matches": "Matches:",
+    "bestRecord": "🏆 Best Record",
+    "bestMoves": "Moves:",
+    "bestTime": "Time:",
+    "restartGame": "Restart Game",
+    "congratulations": "🎉 Congratulations! 🎉",
+    "youWon": "You won the game!",
+    "finalMoves": "Moves:",
+    "fewRecordTitle": "🏆 NEW RECORD! 🏆",
+    "newRecordMessage": "Amazing! You set a new best record!",
+    "newRecordBadge": "⭐ New Best Record! ⭐",
+    "bestRecordLabel": "Best Record:",
+    "moreMoves": "more moves than your best",
+    "matchedBest": "Matched your best moves!",
+    "ninalTime": "Time:",
+    "playAgain": "Play Again",
+    "newRecord": "🎉 New Record!",
+    "noRecord": "No record yet. Play to set one!"
+  },
+  "whackAMole": {
+    "title": "Whack-a-MolRecord!",
+    "newRecordMessage": "⭐ You set a new high score! ⭐",
+    "highScoreLabel": "High Score:",
+    "tryAgain": "Try again",
+    "backToMenu": "← Back to Menu",
+    "score": "Score",
+    "timeLeft": "Time Left",
+    "highScore": "High Score",
+    "startGame": "Start Game",
+    "playAgain": "Play Again",
+    "gameOver": "Game Over!",
+    "yourScore": "Your Score:",
+    "newRecord": "🎉 New High Score!",
+    "keepPracticing": "Keep practicing to beat your record!"
+  },
+  "platformJumper": {
+    "title": "Platform Jumper",
+    "backToMenu": "← Back to Menu",
+    "score": "Score",
+    "highScore": "High Score",
+    "instrVerySlow": "Very Slow",
+    "speedVeryFast": "Very Fast",
+    "newRecordMessage": "⭐ You set a new high score! ⭐",
+    "highScoreLabel": "High Score:",
+    "tryAgain": "Try again",
+    "speed": "Speed:",
+    "slow": "Slow",
+    "fast": "Fast",
+    "speedSlow": "Slow",
+    "speedMedium": "Medium",
+    "speedFast": "Fast",
+    "startGame": "Start Game",
+    "restart": "Restart",
+    "instructions1": "🎮 Use ARROW KEYS or WASD to move",
+    "instructions2": "🍎 Collect food to grow and score points",
+    "instructions3": "⚠️ Don't hit walls or yourself!",
+    "gameOver": "Game Over!",
+    "yourScore": "Your score:",
+    "playAgain": "Play Again",
+    "newRecord": "🎉 New High Score!"
+  },
+  "typingSpeed": {
+    "title": "Typing Speed Test",
+    "rankedMessage": "🎉 You ranked #{rank} in {difficulty} mode! 🎉",
+    "keepPracticing": "Keep practicing to improve!",
+    "tryAgain": "Try again!",
+    "backToMenu": "← Back to Menu",
+    "wpm": "WPM",
+    "score": "Score",
+    "time": "Time",
+    "accuracy": "Accuracy",
+    "difficulty": "Difficulty:",
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard",
+    "typePlaceholder": "Type here...",
+    "clickStart": "Click Start to Begin",
+    "startGame": "Start Game",
+    "restart": "Restart",
+    "topScores": "🏆 Top Scores",
+    "timesUp": "Time's Up! 🎉",
+    "wpmLabel": "WPM:",
+    "scoreLabel": "Score:",
+    "accuracyLabel": "Accuracy:",
+    "playAgain": "Play Again",
+    "newRecord": "🎉 New High Score!",
+    "rankedMessage": "🎉 You ranked #{rank} in {difficulty} mode! 🎉",
+    "keepPracticing": "Keep practicing to improve!",
+    "tryAgain": "Try again!",
+    "noScoresYet": "No scores yet. Be the first!"
+  },
+  "reactionTime": {
+    "title": "Reaction Time Test",
+    "backToMenu": "← Back to Menu",
+    "current": "Current",
+    "average": "Average",
+    "bestTime": "Best Time",
+    "attempts": "Attempts",
+    "testTitle": "⚡ Reaction Time Test ⚡",
+    "instructions": "Click anywhere when the screen turns GREEN",
+    "startTest": "Start Test",
+    "yourAttempts": "📊 Your Attempts",
+    "bestTimes": "🏆 Best Times",
+    "testComplete": "🎉 Test Complete! 🎉",
+    "averageTime": "Average Time:",
+    "bestTimeLabel": "Best Time:",
+    "worstTime": "Worst Time:",
+    "testAgain": "Test Again",
+    "waitForGreen": "Wait for GREEN...",
+    "click": "CLICK!",
+    "clickNow": "CLICK NOW!",
+    "tooEarly": "Too early! Wait for green.",
+    "tooEarlyEmoji": "Too Early! 😅",
+    "msResult": "{time}ms! 🎯",
+    "noAttemptsYet": "No attempts yet",
+    "noRecordsYet": "No records yet. Be the first!",
+    "newRecord": "🎉 New Record!",
+    "rankedMessage": "🎉 You ranked #{rank} on the leaderboard! 🎉",
+    "newPersonalBest": "🏆 New personal best! 🏆",
+    "keepPracticing": "Great job! Keep practicing to improve!"
+  },
+  "stealth": {
+    "title": "Stealth Mission",
+    "backToMenu": "← Back to Menu",
+    "level": "Level",
+    "score": "Score",
+    "bestLevel": "Best Level",
+    "instructions1": "🕵️ Reach the 🎯 Goal without being spotted!",
+    "instructions2": "⚠️ Avoid enemy 👁️ Vision Cones",
+    "instructions3": "🎮 Use WASD or Arrow Keys to move",
+    "startMission": "Start Mission",
+    "retry": "Retry",
+    "missionComplete": "🎉 Mission Complete! 🎉",
+    "levelCleared": "Level {level} cleared!",
+    "scoreLabel": "Score:",
+    "nextMission": "Next Mission",
+    "spotted": "🚨 Spotted! 🚨",
+    "missionFailed": "Mission Failed",
+    "retryMission": "Retry Mission"
+  }
+}

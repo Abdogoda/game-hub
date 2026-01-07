@@ -7,6 +7,11 @@ let timeElapsed = 0;
 let timerInterval = null;
 let isProcessing = false;
 
+// Translation helper
+const t = (key) => {
+    return window.i18n ? window.i18n.t(key) : key;
+};
+
 // Card emojis
 const cardSymbols = ['🎮', '🎨', '🎭', '🎪', '🎯', '🎲', '🎸', '🎺'];
 
@@ -236,20 +241,20 @@ function endGame() {
         const isNewRecord = isBetterRecord(moves, timeElapsed);
         
         if (isNewRecord) {
-            winTitle.textContent = '🏆 NEW RECORD! 🏆';
-            winMessage.textContent = 'Amazing! You set a new best record!';
-            recordComparison.innerHTML = '<p class="new-record">⭐ New Best Record! ⭐</p>';
+            winTitle.textContent = t('memoryCard.newRecordTitle');
+            winMessage.textContent = t('memoryCard.newRecordMessage');
+            recordComparison.innerHTML = `<p class="new-record">${t('memoryCard.newRecordBadge')}</p>`;
             saveBestRecord(moves, timerDisplay.textContent);
         } else {
-            winTitle.textContent = '🎉 Congratulations! 🎉';
-            winMessage.textContent = 'You won the game!';
+            winTitle.textContent = t('memoryCard.congratulations');
+            winMessage.textContent = t('memoryCard.youWon');
             
             const moveDiff = moves - bestRecord.moves;
             recordComparison.innerHTML = `
-                <p><strong>Best Record:</strong></p>
-                <p>Moves: ${bestRecord.moves} | Time: ${bestRecord.time}</p>
+                <p><strong>${t('memoryCard.bestRecordLabel')}</strong></p>
+                <p>${t('memoryCard.bestMoves')} ${bestRecord.moves} | ${t('memoryCard.bestTime')} ${bestRecord.time}</p>
                 <p style="color: #ff6b6b; margin-top: 10px;">
-                    ${moveDiff > 0 ? `${moveDiff} more moves than your best` : 'Matched your best moves!'}
+                    ${moveDiff > 0 ? `${moveDiff} ${t('memoryCard.moreMoves')}` : t('memoryCard.matchedBest')}
                 </p>
             `;
         }
